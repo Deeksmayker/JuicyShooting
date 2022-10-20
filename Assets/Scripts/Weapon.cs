@@ -12,6 +12,8 @@ public abstract class Weapon : MonoBehaviour
 
     [SerializeField] private float rotationSpeed;
 
+    [SerializeField] private Camera cam; 
+
     protected float timeAfterShoot;
 
     protected LineRenderer laser;
@@ -44,24 +46,14 @@ public abstract class Weapon : MonoBehaviour
 
     private void TurnInTouchAngle()
     {
-        if (!Input.GetMouseButton(0))
+        if (Input.touchCount == 0)
         {
-            RotateWeaponToAngle();
+           // RotateWeaponToAngle();
             return;
         }
-        var mousePos = Input.mousePosition;
-        Ray aimObject = Camera.main.ScreenPointToRay(mousePos);
-        if (Physics.Raycast(aimObject, out var hit))
-        {
-            _angleToRotate = Quaternion.LookRotation(hit.distance * aimObject.direction);
-            RotateWeaponToAngle();
-        }
-
-        else
-        {
-            _angleToRotate = Quaternion.LookRotation(aimObject.direction);
-            RotateWeaponToAngle();
-        }
+        var delta = Input.GetTouch(0).deltaPosition;
+        transform.Rotate(new Vector3(-delta.y, delta.x) * rotationSpeed * Time.deltaTime);
+        cam.transform.Rotate(new Vector3(-delta.y, delta.x) * rotationSpeed * Time.deltaTime);
     }
 
     private void RotateWeaponToAngle()

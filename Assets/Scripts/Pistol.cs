@@ -6,7 +6,7 @@ public class Pistol : Weapon
 {
     protected override bool CheckForShootInput()
     {
-        return Input.GetMouseButtonUp(0) && timeAfterShoot >= reloadTime;  
+        return Input.touchCount >= 1 && Input.touches[0].phase == TouchPhase.Ended && timeAfterShoot >= reloadTime;  
     }
 
     public override void Shoot()
