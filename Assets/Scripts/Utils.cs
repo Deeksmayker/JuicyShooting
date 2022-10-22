@@ -11,7 +11,7 @@ namespace Assets.Scripts
     {
         public static void DisableRagdoll(GameObject gameObject)
         {
-            foreach (var rb in gameObject.GetComponentsInChildren<Rigidbody>())
+            foreach (var rb in gameObject.GetComponentsInChildren<Rigidbody>().Skip(1))
             {
                 rb.isKinematic = true;
             }
