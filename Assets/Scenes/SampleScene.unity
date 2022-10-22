@@ -455,7 +455,8 @@ MonoBehaviour:
   bulletSpeed: 50
   startShootPoint: {fileID: 1597664511}
   reloadTime: 0.5
-  rotationSpeed: 20
+  rotationSpeed: 2
+  cam: {fileID: 963194227}
 --- !u!120 &367654888
 LineRenderer:
   m_ObjectHideFlags: 0

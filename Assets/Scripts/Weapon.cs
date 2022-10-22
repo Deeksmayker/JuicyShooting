@@ -53,7 +53,10 @@ public abstract class Weapon : MonoBehaviour
         }
         var delta = Input.GetTouch(0).deltaPosition;
         transform.Rotate(new Vector3(-delta.y, delta.x) * rotationSpeed * Time.deltaTime);
-        cam.transform.Rotate(new Vector3(-delta.y, delta.x) * rotationSpeed * Time.deltaTime);
+
+        cam.transform.Rotate(new Vector3(-delta.y, delta.x, 0) * rotationSpeed * Time.deltaTime);
+        var newCamRot = new Vector3(cam.transform.eulerAngles.x, cam.transform.eulerAngles.y, 0);
+        cam.transform.rotation = Quaternion.Euler(newCamRot);
     }
 
     private void RotateWeaponToAngle()
