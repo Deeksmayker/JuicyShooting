@@ -51,7 +51,8 @@ public abstract class Weapon : MonoBehaviour
         }
         var mousePos = Input.mousePosition;
         Ray aimObject = Camera.main.ScreenPointToRay(mousePos);
-        if (Physics.Raycast(aimObject, out var hit))
+
+        if (Physics.Raycast(aimObject, out var hit, 100f, 0))
         {
             _angleToRotate = Quaternion.LookRotation(hit.distance * aimObject.direction);
             RotateWeaponToAngle();
