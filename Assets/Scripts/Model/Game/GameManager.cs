@@ -2,14 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    public enum EnemyTypes
+    {
+        NormalZombie
+    }
+
+    [SerializeField] private Enemy normalZombiePrefab;
+
     [Serializable]
     public class EnemiesSpawn
     {
-        public Enemy[] enemiesToSpawn;
+        public EnemyTypes[] enemiesToSpawn;
         public float spawnDelay;
     }
 
@@ -41,9 +49,17 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        foreach (var enemy in enemySpawns[0].enemiesToSpawn)
+        foreach (var enemyType in enemySpawns[0].enemiesToSpawn)
         {
-            Instantiate(enemy, GetRandomSpawnPosition(), Quaternion.identity);
+            switch (enemyType)
+            {
+                case EnemyTypes.NormalZombie:
+                    Instantiate(normalZombiePrefab, GetRandomSpawnPosition(), Quaternion.identity);
+                    break;
+                default:
+                    break;
+            }
+            
         }
         if (repeatFirst)
             return;
@@ -55,7 +71,7 @@ public class GameManager : MonoBehaviour
         return new Vector3
             (
             Random.Range(firstRectanglePoint.position.x, secondRectanglePoint.position.x),
-            ground.position.y + 2,
+            ground.position.y + 0.5f,
             Random.Range(firstRectanglePoint.position.z, secondRectanglePoint.position.z)
             );
     }
