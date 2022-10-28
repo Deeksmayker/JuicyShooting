@@ -26,13 +26,11 @@ public abstract class Weapon : MonoBehaviour
     {
         laser = GetComponent<LineRenderer>();
         laser.positionCount = 2;
-        laser.SetPosition(0, startShootPoint.position);
 
         timeAfterShoot = reloadTime;
 
         xAngle = 0;
         yAngle = 0;
-        transform.rotation = Quaternion.Euler(yAngle, xAngle, 0);
         cam.transform.rotation = Quaternion.Euler(yAngle, xAngle, 0);
     }
 
@@ -78,9 +76,9 @@ public abstract class Weapon : MonoBehaviour
         _currentTouchPosition = Input.GetTouch(0).position;
 
         xAngle = xAngleTemp + (_currentTouchPosition.x - _firstTouchPosition.x) * rotationSpeed / Screen.width;
-        yAngle = yAngleTemp + (_currentTouchPosition.y - _firstTouchPosition.y) * rotationSpeed / Screen.height;
-        transform.rotation = Quaternion.Lerp(transform.rotation,  Quaternion.Euler(-yAngle, xAngle, 0.0f), Time.deltaTime * 20);
-        cam.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-yAngle, xAngle, 0.0f), Time.deltaTime * 20); ;
+        yAngle = yAngleTemp + (_currentTouchPosition.y - _firstTouchPosition.y) * rotationSpeed / 1.5f / Screen.height;
+        
+        cam.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-yAngle, xAngle, 0.0f), Time.deltaTime * 20);
     }
 
     #endregion
@@ -92,6 +90,8 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void DrawLaser()
     {
+        laser.SetPosition(0, startShootPoint.position);
+
         if (Physics.Raycast(startShootPoint.position, GetWeaponLookDirection(), out var hit, 100))
         {
             laser.SetPosition(1, hit.point);
