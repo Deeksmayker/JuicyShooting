@@ -1,6 +1,4 @@
 using Assets.Scripts.Model.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -8,9 +6,9 @@ public class BodyPart : MonoBehaviour, ISpreadParticles
 {
     [SerializeField] private bool isWeakPoint;
 
-    public void OnBulletHit(Vector3 bulletVelocity)
+    public void OnBulletHit(float damage, Vector3 bulletVelocity)
     {
-        GetComponentInParent<Enemy>().OnHit(isWeakPoint);
+        GetComponentInParent<Enemy>().OnHit(isWeakPoint, damage);
         GetComponent<Rigidbody>().velocity = bulletVelocity;
     }
 

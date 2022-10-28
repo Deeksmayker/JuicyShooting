@@ -7,6 +7,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected Bullet bulletPrefab;
     [SerializeField] protected float bulletSpeed;
+    [SerializeField] protected float damage = 1;
     [SerializeField] protected Transform startShootPoint;
     [SerializeField] protected float reloadTime;
 

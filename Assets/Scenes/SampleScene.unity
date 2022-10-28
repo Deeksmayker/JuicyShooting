@@ -453,6 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8329559986108347615, guid: 193c519e2e7171a4ab3864f81baae7d9, type: 3}
   bulletSpeed: 50
+  damage: 1
   startShootPoint: {fileID: 1597664511}
   reloadTime: 0.5
   rotationSpeed: 20

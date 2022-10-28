@@ -1052,6 +1052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  health: 3
+  weakPointsCount: 1
   smallParticles: {fileID: 8167067520147848454, guid: d3ebaec6953a2cc42b66d4ac0f510917, type: 3}
   hugeParticles: {fileID: 2229625050855817978, guid: d07833bbc9aeb254f942e15af155c3ff, type: 3}
 --- !u!1 &5577552643432261715 stripped

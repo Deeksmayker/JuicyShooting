@@ -5,8 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
+    public float damage = 1;
+
     private float _maxLifeTime = 10;
     private float _lifeTime = 0;
+
+    private Vector3 _lastFrameVelocity;
+
+    private Rigidbody _rb;
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -15,11 +26,16 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void LateUpdate()
+    {
+        _lastFrameVelocity = _rb.velocity;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<BodyPart>(out var bodyPart))
         {
-            bodyPart.OnBulletHit(GetComponent<Rigidbody>().velocity);
+            bodyPart.OnBulletHit(damage, _lastFrameVelocity);
         }
 
         foreach (var spreadedParticles in collision.gameObject.GetComponents<MonoBehaviour>().OfType<ISpreadParticles>())

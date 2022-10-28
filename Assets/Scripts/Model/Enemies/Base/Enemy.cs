@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 5;
 
+    [SerializeField] private float health;
+    [SerializeField] private int weakPointsCount;
     [SerializeField] private ParticleSystem smallParticles, hugeParticles;
 
     private Vector3 _pointToGo;
@@ -33,14 +35,25 @@ public class Enemy : MonoBehaviour
         transform.LookAt(_pointToGo, Vector3.up);
     }
 
-    public void OnHit(bool isWeakPoint)
+    public void OnHit(bool isWeakPoint, float damage)
+    {
+        health -= damage;
+
+        if (isWeakPoint)
+        {
+            StartCoroutine(Utils.SlowTime(0.5f, 0.3f));
+            weakPointsCount -= 1;
+        }
+
+        if (weakPointsCount <= 0 || health <= 0)
+            Die();
+    }
+
+    private void Die()
     {
         _ch.enabled = false;
         _dead = true;
         Utils.EnableRagdoll(gameObject);
-
-        if (isWeakPoint)
-            StartCoroutine(Utils.SlowTime(0.3f, 0.5f));
     }
 
     public void SpreadParticles(bool weakPoint, Vector3 pos)
