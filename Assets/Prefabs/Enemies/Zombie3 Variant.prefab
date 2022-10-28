@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5983711b5ac335b49aa7da10ed088a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.5
   health: 3
   weakPointsCount: 1
   smallParticles: {fileID: 8167067520147848454, guid: d3ebaec6953a2cc42b66d4ac0f510917, type: 3}
