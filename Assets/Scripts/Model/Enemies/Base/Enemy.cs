@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
         _pointToGo = FindObjectOfType<Barricade>().transform.position + Utils.GetRandomHorizontalVector(0.2f);
         _pointToGo.y = GameObject.FindWithTag("GroundPosition").transform.position.y;
         _ch = GetComponent<CharacterController>();
+
+        speed *= Random.Range(0.7f, 1.3f);
     }
 
     private void Update()

@@ -44,3 +44,4 @@ public abstract class Weapon : MonoBehaviour
         return transform.forward;
     }
 }
+ 

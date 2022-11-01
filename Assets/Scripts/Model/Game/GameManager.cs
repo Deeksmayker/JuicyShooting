@@ -1,60 +1,46 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-    public enum EnemyTypes
-    {
-        NormalZombie
-    }
-
-    [SerializeField] private Enemy normalZombiePrefab;
-
-    [Serializable]
-    public class EnemiesSpawn
-    {
-        public EnemyTypes[] enemiesToSpawn;
-        public float spawnDelay;
-    }
-
     [SerializeField] private Transform ground, firstRectanglePoint, secondRectanglePoint;
 
     [SerializeField] private bool repeatFirst;
-    [SerializeField] private List<EnemiesSpawn> enemySpawns = new();
 
     private float delayTimer;
 
+    private SpawnEnemiesData _enemiesSpawnData;
+    private int _spawnsIndex;
+
     private void Awake()
     {
-
+        _enemiesSpawnData = GameData.Instance.GetCurrentEnemySpawnData();
     }
 
     private void Update()
     {
-
-        if (enemySpawns.Count() == 0)
+        if (_spawnsIndex == _enemiesSpawnData.EnemySpawns.Count - 1)
             return;
         delayTimer += Time.deltaTime;
 
-        if (delayTimer > enemySpawns[0].spawnDelay)
+        if (delayTimer > _enemiesSpawnData.EnemySpawns[_spawnsIndex].spawnDelay)
         {
             SpawnEnemies();
             delayTimer = 0;
+            _spawnsIndex++;
         }
     }
 
     private void SpawnEnemies()
     {
-        foreach (var enemyType in enemySpawns[0].enemiesToSpawn)
+        Debug.Log(_enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn.Count());
+        foreach (var enemyType in _enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn)
         {
             switch (enemyType)
             {
-                case EnemyTypes.NormalZombie:
-                    Instantiate(normalZombiePrefab, GetRandomSpawnPosition(), Quaternion.identity);
+                case SpawnEnemiesData.EnemyTypes.NormalZombie:
+                    Instantiate(_enemiesSpawnData.EnemyPrefabs.normalZombie, GetRandomSpawnPosition(), Quaternion.identity);
                     break;
                 default:
                     break;
@@ -63,7 +49,6 @@ public class GameManager : MonoBehaviour
         }
         if (repeatFirst)
             return;
-        enemySpawns.RemoveAt(0);
     }
 
     private Vector3 GetRandomSpawnPosition()
