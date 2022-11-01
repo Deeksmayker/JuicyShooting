@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 367654886}
   - component: {fileID: 367654887}
   - component: {fileID: 367654888}
+  - component: {fileID: 367654889}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -456,8 +457,9 @@ MonoBehaviour:
   damage: 1
   startShootPoint: {fileID: 1597664511}
   reloadTime: 0.5
-  rotationSpeed: 90
-  cam: {fileID: 963194227}
+  layersToShoot:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!120 &367654888
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -466,8 +468,8 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367654885}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 0
@@ -557,6 +559,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &367654889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367654885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88c724e9136f45408ccb6e6eb80cb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startShootPoint: {fileID: 1597664511}
 --- !u!4 &415749465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7201f13bee9b665439a2d0c9e73db665, type: 3}

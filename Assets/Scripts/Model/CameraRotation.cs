@@ -20,30 +20,27 @@ public class CameraRotation : MonoBehaviour
         transform.rotation = Quaternion.Euler(yAngle, xAngle, 0);
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         TurnInTouchAngle();
     }
 
     private void TurnInTouchAngle()
     {
-        if (Input.touchCount == 0)
+        if (!Input.GetMouseButton(0))
         {
             // RotateWeaponToAngle();
             return;
         }
 
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.GetMouseButtonDown(0))
         {
-            _firstTouchPosition = Input.GetTouch(0).position;
+            _firstTouchPosition = Input.mousePosition;
             xAngleTemp = xAngle;
             yAngleTemp = yAngle;
         }
 
-        if (Input.GetTouch(0).phase != TouchPhase.Moved)
-            return;
-
-        _currentTouchPosition = Input.GetTouch(0).position;
+        _currentTouchPosition = Input.mousePosition;
 
         xAngle = xAngleTemp + (_currentTouchPosition.x - _firstTouchPosition.x) * rotationSpeed / Screen.width;
         yAngle = yAngleTemp + (_currentTouchPosition.y - _firstTouchPosition.y) * rotationSpeed / Screen.height;
