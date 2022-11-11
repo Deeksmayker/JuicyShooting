@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
 
     private CharacterController _ch;
     private bool _dead;
+
+    public static UnityEvent EnemyDied = new();
 
     private void Awake()
     {
@@ -56,6 +59,7 @@ public class Enemy : MonoBehaviour
         _ch.enabled = false;
         _dead = true;
         Utils.EnableRagdoll(gameObject);
+        EnemyDied.Invoke();
     }
 
     public void SpreadParticles(bool weakPoint, Vector3 pos)

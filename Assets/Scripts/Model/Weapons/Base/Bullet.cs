@@ -12,11 +12,11 @@ public class Bullet : MonoBehaviour
 
     private Vector3 _lastFrameVelocity;
 
-    private Rigidbody _rb;
+    [HideInInspector] public Rigidbody Rb;
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
 
     private void LateUpdate()
     {
-        _lastFrameVelocity = _rb.velocity;
+        _lastFrameVelocity = Rb.velocity;
     }
 
     private void OnCollisionEnter(Collision collision)

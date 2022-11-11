@@ -15,7 +15,7 @@ TagManager:
   - Bullet
   - EnemyMoveCollider
   - EnemyHurtBox
-  - 
+  - WeaponShootTrigger
   - 
   - 
   - 

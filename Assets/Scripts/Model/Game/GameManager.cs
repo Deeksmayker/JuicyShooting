@@ -1,63 +1,26 @@
-using System.Linq;
+using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Transform ground, firstRectanglePoint, secondRectanglePoint;
+    private EnemySpawnManager _spawnManager;
 
-    [SerializeField] private bool repeatFirst;
-
-    private float delayTimer;
-
-    private SpawnEnemiesData _enemiesSpawnData;
-    private int _spawnsIndex;
-
-    private void Awake()
+    private void Start()
     {
-        _enemiesSpawnData = GameData.Instance.GetCurrentEnemySpawnData();
+        _spawnManager = GetComponent<EnemySpawnManager>();
+        _spawnManager.AllEnemiesDied.AddListener(() => StartCoroutine(EndLevel()));
     }
 
     private void Update()
     {
-        if (_spawnsIndex == _enemiesSpawnData.EnemySpawns.Count - 1)
-            return;
-        delayTimer += Time.deltaTime;
-
-        if (delayTimer > _enemiesSpawnData.EnemySpawns[_spawnsIndex].spawnDelay)
-        {
-            SpawnEnemies();
-            delayTimer = 0;
-            _spawnsIndex++;
-        }
+        
     }
 
-    private void SpawnEnemies()
-    {
-        Debug.Log(_enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn.Count());
-        foreach (var enemyType in _enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn)
-        {
-            switch (enemyType)
-            {
-                case SpawnEnemiesData.EnemyTypes.NormalZombie:
-                    Instantiate(_enemiesSpawnData.EnemyPrefabs.normalZombie, GetRandomSpawnPosition(), Quaternion.identity);
-                    break;
-                default:
-                    break;
-            }
-            
-        }
-        if (repeatFirst)
-            return;
-    }
 
-    private Vector3 GetRandomSpawnPosition()
+    public IEnumerator EndLevel()
     {
-        return new Vector3
-            (
-            Random.Range(firstRectanglePoint.position.x, secondRectanglePoint.position.x),
-            ground.position.y + 0.5f,
-            Random.Range(firstRectanglePoint.position.z, secondRectanglePoint.position.z)
-            );
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(0);
     }
 }

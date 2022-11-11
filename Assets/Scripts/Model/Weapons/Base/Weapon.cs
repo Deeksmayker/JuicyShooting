@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected Bullet bulletPrefab;
@@ -10,11 +8,11 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float damage = 1;
     [SerializeField] protected Transform startShootPoint;
     [SerializeField] protected float reloadTime;
+    [SerializeField, Tooltip("Разброс оружия. 0 - без разброса"), Min(0)] protected float spread;
     [SerializeField] protected LayerMask layersToShoot;
 
     protected float timeAfterShoot;
 
-    
     public abstract void Shoot();
 
     protected virtual void Awake()
@@ -25,23 +23,37 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Update()
     {
         timeAfterShoot += Time.deltaTime;
-
-        if (CheckForShoot())
-            Shoot();
     }
 
-    private bool CheckForShoot()
+    private void CheckInputAndReloadTimeAndShoot()
     {
-        if (Physics.Raycast(startShootPoint.position, GetWeaponLookDirection(), 100f, layersToShoot))
+        if (timeAfterShoot >= reloadTime && Input.GetMouseButton(0))
         {
-            return timeAfterShoot >= reloadTime && Input.GetMouseButton(0);
+            Shoot();
         }
-        return false;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        CheckInputAndReloadTimeAndShoot();
     }
 
     protected Vector3 GetWeaponLookDirection()
     {
         return transform.forward;
+    }
+
+    protected void ShootBulletWithSpread()
+    {
+        var randomNumberX = Random.Range(-spread, spread);
+        var randomNumberY = Random.Range(-spread, spread);
+        var randomNumberZ = Random.Range(-spread, spread);
+
+        var bullet = Instantiate(bulletPrefab, startShootPoint.position, transform.rotation);
+        bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
+        bullet.Rb.velocity = bullet.transform.forward * bulletSpeed;
+        bullet.damage = damage;
+        timeAfterShoot = 0;
     }
 }
  
