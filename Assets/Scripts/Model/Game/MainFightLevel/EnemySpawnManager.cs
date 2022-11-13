@@ -58,7 +58,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         if (_enemiesOnSceneCount == 0 && _spawnsIndex == _enemiesSpawnData.EnemySpawns.Count)
         {
-            AllEnemiesDied.Invoke();
+            //AllEnemiesDied.Invoke();
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -8,9 +8,14 @@ namespace Assets.Scripts
     {
         private void Awake()
         {
-            Time.timeScale = 1;
-            _timeSlowed = false;
-            _dontResumeTime = false;
+            DontDestroyOnLoad(gameObject);
+
+            SceneManager.activeSceneChanged += (a, b) =>
+            {
+                Time.timeScale = 1;
+                _timeSlowed = false;
+                _dontResumeTime = false;
+            };
         }
 
         public static void DisableRagdoll(GameObject gameObject)

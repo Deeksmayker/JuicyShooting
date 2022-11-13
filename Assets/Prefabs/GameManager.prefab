@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 712461080685371193}
   - component: {fileID: 712461080685371194}
-  - component: {fileID: 712461080685371192}
-  - component: {fileID: 712461080685371174}
   - component: {fileID: 712461080685371173}
   m_Layer: 0
   m_Name: GameManager
@@ -47,34 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460f0c7a93c13b3489ce2fda6302790a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &712461080685371192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712461080685371195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b385f79b11fa2e940988a73033d064fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &712461080685371174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712461080685371195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4580e26876c5033479a52d261510ea2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Money>k__BackingField: 0
-  <Level>k__BackingField: 1
-  levelsEnemySpawnData:
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
 --- !u!114 &712461080685371173
 MonoBehaviour:
   m_ObjectHideFlags: 0

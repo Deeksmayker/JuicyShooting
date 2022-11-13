@@ -85,6 +85,7 @@ MonoBehaviour:
   damage: 1
   startShootPoint: {fileID: 7247438067956705407}
   reloadTime: 0.5
+  spread: 0
   layersToShoot:
     serializedVersion: 2
     m_Bits: 256
@@ -211,8 +212,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.52, y: 0.44, z: 104.0618}
-  m_Center: {x: 0, y: 0.19, z: 51}
+  m_Size: {x: 0.52, y: 0.44, z: 72.079605}
+  m_Center: {x: 0, y: 0.19050999, z: 35.007767}
 --- !u!1001 &600526580529490788
 PrefabInstance:
   m_ObjectHideFlags: 0

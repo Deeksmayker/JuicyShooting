@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +7,8 @@ public class GameData : MonoBehaviour
 
     [field: SerializeField, Min(0)] public int Money { get; private set; }
     [field: SerializeField] public int Level { get; private set; } = 1;
+    [field: SerializeField] public string WeaponName { get; private set; }
+    [field: SerializeField] public Weapon CurrentWeapon;
 
     [SerializeField] private List<SpawnEnemiesData> levelsEnemySpawnData = new();
 
@@ -17,7 +18,7 @@ public class GameData : MonoBehaviour
         Instance = this;
     }
 
-    public void ChangeMoney(int value)
+    public void AddMoney(int value)
     {
         Money += value;
     }
