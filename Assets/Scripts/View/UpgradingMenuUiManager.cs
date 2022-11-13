@@ -11,7 +11,7 @@ public class UpgradingMenuUiManager : MonoBehaviour
     private void Start()
     {
         weaponTitle.text = GameData.Instance.WeaponName;
-        weaponPrefab = Instantiate(weaponPrefab, weaponPosition.position, Quaternion.identity);
+        weaponPrefab = Instantiate(GameData.Instance.CurrentWeapon, weaponPosition.position, Quaternion.identity);
     }
 
     private void Update()
