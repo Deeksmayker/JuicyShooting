@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider))]
 public abstract class Weapon : MonoBehaviour
@@ -12,6 +13,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected LayerMask layersToShoot;
 
     protected float timeAfterShoot;
+
+    public UnityEvent fired = new();
+    public UnityEvent reloading = new();
 
     public abstract void Shoot();
 

@@ -11,7 +11,8 @@ public class UpgradingMenuUiManager : MonoBehaviour
     private void Start()
     {
         weaponTitle.text = GameData.Instance.WeaponName;
-        weaponPrefab = Instantiate(GameData.Instance.CurrentWeapon, weaponPosition.position, Quaternion.identity);
+        weaponPrefab = Instantiate(GameData.Instance.CurrentWeapon, weaponPosition);
+        weaponPrefab.transform.localPosition = Vector3.zero + weaponPrefab.transform.forward / 2;
     }
 
     private void Update()
@@ -21,6 +22,6 @@ public class UpgradingMenuUiManager : MonoBehaviour
 
     private void RotateWeaponPrefab()
     {
-        weaponPrefab.transform.Rotate(Vector3.up, weaponRotationSpeed * Time.deltaTime);
+        weaponPosition.transform.Rotate(Vector3.up, weaponRotationSpeed * Time.deltaTime);
     }
 }
