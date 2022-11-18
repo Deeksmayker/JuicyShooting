@@ -1,0 +1,16 @@
+{
+    "name": "GameFlow",
+    "rootNamespace": "",
+    "references": [
+        "GUID:271a200b5ea3919428720f72e6758994"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

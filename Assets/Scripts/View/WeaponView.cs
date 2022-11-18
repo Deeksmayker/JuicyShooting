@@ -5,11 +5,18 @@ public class WeaponView : MonoBehaviour
     [SerializeField] private Transform startShootPoint;
 
     private LineRenderer _laser;
+    private Animator _animator;
+    private Weapon _weapon;
 
-    private void Awake()
+    private void Start()
     {
         _laser = GetComponent<LineRenderer>();
         _laser.positionCount = 2;
+
+        _animator = GetComponentInChildren<Animator>();
+        _weapon = GetComponent<Weapon>();
+
+        _weapon.reloading.AddListener(SetAnimationToReload);
     }
 
     private void LateUpdate()
@@ -35,5 +42,12 @@ public class WeaponView : MonoBehaviour
     protected Vector3 GetWeaponLookDirection()
     {
         return startShootPoint.forward;
+    }
+
+    private void SetAnimationToReload()
+    {
+        if (_animator == null)
+            return;
+        _animator.SetTrigger("Reload");
     }
 }

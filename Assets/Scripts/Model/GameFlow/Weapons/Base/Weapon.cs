@@ -8,8 +8,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float damage = 1;
     [SerializeField] protected Transform startShootPoint;
-    [SerializeField] protected float reloadTime;
-    [SerializeField, Tooltip("Разброс оружия. 0 - без разброса"), Min(0)] protected float spread;
+    public float reloadTime;
+    [Tooltip("Разброс оружия. 0 - без разброса"), Min(0)] public float spread;
     [SerializeField] protected LayerMask layersToShoot;
 
     protected float timeAfterShoot;

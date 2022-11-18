@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _spawnManager = GetComponent<EnemySpawnManager>();
-        _spawnManager.AllEnemiesDied.AddListener(() => StartCoroutine(EndLevel()));
     }
 
     private void Update()
@@ -18,9 +17,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public IEnumerator EndLevel()
+    public void LoadUpgradeSceneOnLose()
     {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reset
+  m_text: Upgrade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -990,9 +990,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 471005909}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: ResetLevel
+      - m_Target: {fileID: 712461079470414424}
+        m_TargetAssemblyTypeName: GameManager, GameFlow
+        m_MethodName: LoadUpgradeSceneOnLose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1189,6 +1189,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f8e53545f5f7964dbfdb07973e5d002, type: 3}
+--- !u!114 &712461079470414424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 712461080685371194, guid: 3f8e53545f5f7964dbfdb07973e5d002, type: 3}
+  m_PrefabInstance: {fileID: 712461079470414423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460f0c7a93c13b3489ce2fda6302790a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1021831631213970660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1272,6 +1283,14 @@ PrefabInstance:
       propertyPath: bulletSpeed
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 3806216850241525337, guid: 117e34f3dcfd3cd42912920d99d6faaf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.442
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806216850241525337, guid: 117e34f3dcfd3cd42912920d99d6faaf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.816
+      objectReference: {fileID: 0}
     - target: {fileID: 7306406710532590827, guid: 117e34f3dcfd3cd42912920d99d6faaf, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -1286,3 +1305,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 117e34f3dcfd3cd42912920d99d6faaf, type: 3}
+--- !u!1 &1021831631213970661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3332029600426828539, guid: 117e34f3dcfd3cd42912920d99d6faaf, type: 3}
+  m_PrefabInstance: {fileID: 1021831631213970660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1021831631213970662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021831631213970661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3158c8c3fde55ee4585de971ae35f879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

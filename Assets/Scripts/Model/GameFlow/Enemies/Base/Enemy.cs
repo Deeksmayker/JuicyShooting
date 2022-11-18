@@ -1,8 +1,5 @@
 using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
@@ -12,15 +9,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private int weakPointsCount;
     [SerializeField] private ParticleSystem smallParticles, hugeParticles;
+    [SerializeField] private int moneyByKill, moneyByKillInWeakPoint;
 
     private Vector3 _pointToGo;
 
     private CharacterController _ch;
     private bool _dead;
 
-    public static UnityEvent EnemyDied = new();
+    public UnityEvent hited = new();
+    public UnityEvent hitedInWeakPoint = new();
 
-    private void Awake()
+    public static UnityEvent EnemyDied = new();
+    public static UnityEvent EnemyDiedByWeakPoint = new();
+
+    private void Start()
     {
         Utils.DisableRagdoll(gameObject);
         _pointToGo = FindObjectOfType<Barricade>().transform.position + Utils.GetRandomHorizontalVector(0.2f);
@@ -51,7 +53,20 @@ public class Enemy : MonoBehaviour
         }
 
         if (weakPointsCount <= 0 || health <= 0)
+        {
+            if (isWeakPoint)
+            {
+                EnemyDiedByWeakPoint.Invoke();
+                GameData.Instance.AddMoney(moneyByKillInWeakPoint);
+            }
+
+            else
+            {
+                EnemyDied.Invoke();
+                GameData.Instance.AddMoney(moneyByKill);
+            }
             Die();
+        }
     }
 
     private void Die()
