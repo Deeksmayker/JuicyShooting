@@ -14,6 +14,6 @@ public class BodyPart : MonoBehaviour, ISpreadParticles
 
     public void SpreadParticles(Vector3 pos)
     {
-        GetComponentInParent<Enemy>().SpreadParticles(isWeakPoint, pos);
+        GetComponentInParent<EnemyView>().SpreadParticles(isWeakPoint, pos);
     }
 }

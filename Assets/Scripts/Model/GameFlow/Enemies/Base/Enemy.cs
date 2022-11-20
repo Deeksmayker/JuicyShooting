@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float health;
     [SerializeField] private int weakPointsCount;
-    [SerializeField] private ParticleSystem smallParticles, hugeParticles;
+
     [SerializeField] private int moneyByKill, moneyByKillInWeakPoint;
 
     private Vector3 _pointToGo;
@@ -77,8 +77,5 @@ public class Enemy : MonoBehaviour
         EnemyDied.Invoke();
     }
 
-    public void SpreadParticles(bool weakPoint, Vector3 pos)
-    {
-        Instantiate(weakPoint ? hugeParticles : smallParticles, pos, Quaternion.identity);
-    }
+   
 }

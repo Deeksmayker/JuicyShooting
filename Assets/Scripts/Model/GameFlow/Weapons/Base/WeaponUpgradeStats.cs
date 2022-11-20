@@ -1,29 +1,21 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Weapon))]
+[Serializable]
 public class WeaponUpgradeStats
 {
     public int ReloadLevel { get; private set; }
     public int SpreadLevel { get; private set; }
 
-    public float ReduceReloadTimePerLevel { get; private set; }
-    public float ReduceSpreadPerLevel { get; private set; }
 
-    public float BaseReloadUpgradeCost { get; private set; }
-    public float BaseSpreadUpgradeCost { get; private set; }
-    public float PerLevelReloadCostMultiplier { get; private set; }
-    public float PerLevelSpreadCostMultiplier { get; private set; }
-
-    public WeaponUpgradeStats(float reloadCost, float spreadCost, float perLevelReloadCostMultiplier, float perLevelSpreadCostMultiplier,
-        float reduceReload, float reduceSpread)
-    {
-        BaseReloadUpgradeCost = reloadCost;
-        BaseSpreadUpgradeCost = spreadCost;
-        PerLevelReloadCostMultiplier = perLevelReloadCostMultiplier;
-        PerLevelSpreadCostMultiplier = perLevelSpreadCostMultiplier;
-        ReduceReloadTimePerLevel = reduceReload;
-        ReduceSpreadPerLevel = reduceSpread;
-    }
+    [field: SerializeField] public int CostToBuy { get; private set; }
+    [field: SerializeField] public float ReduceReloadTimePerLevel { get; private set; }
+    [field: SerializeField] public float ReduceSpreadPerLevel { get; private set; }
+    [field: SerializeField] public float BaseReloadUpgradeCost { get; private set; }
+    [field: SerializeField] public float BaseSpreadUpgradeCost { get; private set; }
+    [field: SerializeField] public float PerLevelReloadCostMultiplier { get; private set; }
+    [field: SerializeField] public float PerLevelSpreadCostMultiplier { get; private set; }
 
     public void UpgradeReloadTime()
     {

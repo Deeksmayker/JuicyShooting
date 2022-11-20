@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class UpgradingMenuUiManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI weaponTitle;
-    [SerializeField] private Weapon weaponPrefab;
     [SerializeField] private Transform weaponPosition;
     [SerializeField] private float weaponRotationSpeed;
 
@@ -25,17 +24,15 @@ public class UpgradingMenuUiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rocketTurretCost;
 
     private WeaponUpgradeStats _weaponStats;
+    private Weapon weaponPrefab;
+
 
     private void Start()
     {
-        weaponTitle.text = GameData.Instance.WeaponName;
-        weaponPrefab = Instantiate(GameData.Instance.CurrentWeapon, weaponPosition);
-        weaponPrefab.transform.localPosition = Vector3.zero + weaponPrefab.transform.forward / 2;
+        SetWeaponToRotation();
 
-        _weaponStats = GameData.Instance.WeaponUpgradeStats;
-        UpdateButtonsAndMoney(GameData.Instance.Money);
-
-        GameData.Instance.moneyValueChanged.AddListener(UpdateButtonsAndMoney);
+        _weaponStats = GameData.Instance.WeaponStats;
+        UpdateButtonsAndMoney();
     }
 
     private void Update()
@@ -52,27 +49,61 @@ public class UpgradingMenuUiManager : MonoBehaviour
     {
         GameData.Instance.RemoveMoney(_weaponStats.GetReloadUpgradeCost());
         _weaponStats.UpgradeReloadTime();
+        UpdateButtonsAndMoney();
     }
     public void UpgradeSpread()
     {
         GameData.Instance.RemoveMoney(_weaponStats.GetSpreadUpgradeCost());
         _weaponStats.UpgradeSpread();
+        UpdateButtonsAndMoney();
     }
 
-    private void UpdateButtonsAndMoney(int newMoneyValue)
+    public void BuyNewWeapon()
     {
-        moneyCount.text = newMoneyValue.ToString();
+        GameData.Instance.SetWeaponToNext();
+        Destroy(weaponPrefab.gameObject);
+        SetWeaponToRotation();
+        _weaponStats = GameData.Instance.WeaponStats;
+
+        GameData.Instance.RemoveMoney(_weaponStats.CostToBuy);
+        UpdateButtonsAndMoney();
+    }
+
+    private void UpdateButtonsAndMoney()
+    {
+        moneyCount.text = GameData.Instance.Money.ToString();
 
         reloadCost.text = _weaponStats.GetReloadUpgradeCost().ToString();
-        if (_weaponStats.GetReloadUpgradeCost() > newMoneyValue || _weaponStats.ReloadLevel > 10)
+        if (_weaponStats.GetReloadUpgradeCost() > GameData.Instance.Money || _weaponStats.ReloadLevel > 10)
             reloadButton.interactable = false;
         else
             reloadButton.interactable = true;
 
         spreadCost.text = _weaponStats.GetSpreadUpgradeCost().ToString();
-        if (_weaponStats.GetSpreadUpgradeCost() > newMoneyValue || _weaponStats.SpreadLevel > 10)
+        if (_weaponStats.GetSpreadUpgradeCost() > GameData.Instance.Money || _weaponStats.SpreadLevel > 10)
             spreadButton.interactable = false;
         else
             spreadButton.interactable = true;
+
+        if (GameData.Instance.NextWeaponExisting())
+        {
+            weaponCost.text = GameData.Instance.GetNextWeaponCost().ToString();
+            if (GameData.Instance.GetNextWeaponCost() > GameData.Instance.Money)
+                weaponButton.interactable = false;
+            else
+                weaponButton.interactable = true;
+        }
+        else
+        {
+            weaponCost.text = "MAX";
+            weaponButton.interactable = false;
+        }
+    }
+
+    private void SetWeaponToRotation()
+    {
+        weaponTitle.text = GameData.Instance.GetCurrentWeaponName();
+        weaponPrefab = Instantiate(GameData.Instance.CurrentWeapon, weaponPosition);
+        weaponPrefab.transform.localPosition = Vector3.zero + weaponPrefab.transform.forward / 2;
     }
 }
