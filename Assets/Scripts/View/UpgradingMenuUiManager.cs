@@ -12,16 +12,12 @@ public class UpgradingMenuUiManager : MonoBehaviour
     [SerializeField] private Button reloadButton;
     [SerializeField] private Button spreadButton;
     [SerializeField] private Button weaponButton;
-    [SerializeField] private Button fastTurretBuyButton;
-    [SerializeField] private Button rocketTurretBuyButton;
 
     [Header("Text fields")]
     [SerializeField] private TextMeshProUGUI moneyCount;
     [SerializeField] private TextMeshProUGUI reloadCost;
     [SerializeField] private TextMeshProUGUI spreadCost;
     [SerializeField] private TextMeshProUGUI weaponCost;
-    [SerializeField] private TextMeshProUGUI fastTurretCost;
-    [SerializeField] private TextMeshProUGUI rocketTurretCost;
 
     private WeaponUpgradeStats _weaponStats;
     private Weapon weaponPrefab;

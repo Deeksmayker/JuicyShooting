@@ -1,45 +1,79 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(BoxCollider))]
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected Bullet bulletPrefab;
+    [SerializeField, Min(1)] protected int shootsBeforeReload;
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float damage = 1;
-    [SerializeField] protected Transform startShootPoint;
+    [SerializeField] protected float betweenShootDelay;
     public float reloadTime;
-    [Tooltip("–азброс оружи€. 0 - без разброса"), Min(0)] public float spread;
+    [Tooltip("0 - без разброса"), Min(0)] public float spread;
     [SerializeField] protected LayerMask layersToShoot;
 
-    protected float timeAfterShoot;
+    protected int bulletsInMagazine;
 
-    public UnityEvent fired = new();
-    public UnityEvent reloading = new();
+    private bool _canShoot = true;
+
+    protected Transform[] shootPointsPositions;
+
+    [HideInInspector] public UnityEvent Fired = new();
+    [HideInInspector] public UnityEvent ReloadStarted = new();
+    [HideInInspector] public UnityEvent ReloadEnded = new();
 
     public abstract void Shoot();
 
     protected virtual void Awake()
     {
-        timeAfterShoot = reloadTime;
+        bulletsInMagazine = shootsBeforeReload;
+
+        foreach (var shootPoint in GetComponentsInChildren<ShootPoint>())
+        {
+            shootPoint.EnemyDetected.AddListener(CheckInputAndReloadTimeAndShoot);
+        }
+
+        shootPointsPositions = GetComponentsInChildren<ShootPoint>().Select(shootPoint => shootPoint.transform).ToArray();
     }
 
     protected virtual void Update()
     {
-        timeAfterShoot += Time.deltaTime;
+
     }
 
     private void CheckInputAndReloadTimeAndShoot()
     {
-        if (timeAfterShoot >= reloadTime && Input.GetMouseButton(0))
+        if (_canShoot && Input.GetMouseButton(0))
         {
+            bulletsInMagazine--;
             Shoot();
+            Fired.Invoke();
+            _canShoot = false;
+
+            if (bulletsInMagazine <= 0)
+            {
+                ReloadStarted.Invoke();
+                Invoke(nameof(Reload), reloadTime);
+            }
+
+            else
+            {
+                Invoke(nameof(RefreshAfterShoot), betweenShootDelay);
+            }
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void Reload()
     {
-        CheckInputAndReloadTimeAndShoot();
+        bulletsInMagazine = shootsBeforeReload;
+        _canShoot = true;
+        ReloadEnded.Invoke();
+    }
+
+    private void RefreshAfterShoot()
+    {
+        _canShoot = true;
     }
 
     protected Vector3 GetWeaponLookDirection()
@@ -47,17 +81,16 @@ public abstract class Weapon : MonoBehaviour
         return transform.forward;
     }
 
-    protected void ShootBulletWithSpread()
+    protected void ShootBulletWithSpread(Vector3 startPoint)
     {
         var randomNumberX = Random.Range(-spread, spread);
         var randomNumberY = Random.Range(-spread, spread);
         var randomNumberZ = Random.Range(-spread, spread);
 
-        var bullet = Instantiate(bulletPrefab, startShootPoint.position, transform.rotation);
+        var bullet = Instantiate(bulletPrefab, startPoint, transform.rotation);
         bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
         bullet.Rb.velocity = bullet.transform.forward * bulletSpeed;
         bullet.damage = damage;
-        timeAfterShoot = 0;
     }
 }
  

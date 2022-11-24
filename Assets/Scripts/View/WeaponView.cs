@@ -1,22 +1,29 @@
+using System.Linq;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WeaponView : MonoBehaviour
 {
-    [SerializeField] private Transform startShootPoint;
+    [SerializeField] private Animation anim;
 
-    private LineRenderer _laser;
+    private LineRenderer[] _lasers;
     private Animator _animator;
     private Weapon _weapon;
+    private Transform[] shootPointsPositions;
 
     private void Start()
     {
-        _laser = GetComponent<LineRenderer>();
-        _laser.positionCount = 2;
+        _lasers = GetComponentsInChildren<LineRenderer>();
+        for (var i = 0; i < _lasers.Length; i++)
+        {
+            _lasers[i].positionCount = 2;
+        }
 
         _animator = GetComponentInChildren<Animator>();
         _weapon = GetComponent<Weapon>();
+        _weapon.ReloadStarted.AddListener(SetAnimationToReload);
 
-        _weapon.reloading.AddListener(SetAnimationToReload);
+        shootPointsPositions = GetComponentsInChildren<ShootPoint>().Select(shootPoint => shootPoint.transform).ToArray();
     }
 
     private void LateUpdate()
@@ -26,26 +33,35 @@ public class WeaponView : MonoBehaviour
 
     protected virtual void DrawLaser()
     {
-        _laser.SetPosition(0, startShootPoint.position);
-
-        if (Physics.Raycast(startShootPoint.position, GetWeaponLookDirection(), out var hit, 100))
+        for (var i = 0; i < _lasers.Length; i++)
         {
-            _laser.SetPosition(1, hit.point);
+            _lasers[i].SetPosition(0, shootPointsPositions[i].position);
+
+            if (Physics.Raycast(shootPointsPositions[i].position, GetWeaponLookDirection(), out var hit, 100))
+            {
+                _lasers[i].SetPosition(1, hit.point);
+            }
+
+            else
+            {
+                _lasers[i].SetPosition(1, GetWeaponLookDirection() * 300);
+            }
         }
 
-        else
-        {
-            _laser.SetPosition(1, GetWeaponLookDirection() * 300);
-        }
+        
     }
 
     protected Vector3 GetWeaponLookDirection()
     {
-        return startShootPoint.forward;
+        return transform.forward;
     }
 
     private void SetAnimationToReload()
     {
+        Debug.Log("SDF");
+        //anim["Armature|Reload"].time = _weapon.reloadTime;
+        anim.Play();
+
         if (_animator == null)
             return;
         _animator.SetTrigger("Reload");

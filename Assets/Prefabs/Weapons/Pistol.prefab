@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7247438067956705407}
-  m_Layer: 0
+  - component: {fileID: 7488516063232754241}
+  - component: {fileID: 4021410111642164078}
+  - component: {fileID: 5910854120821293896}
+  m_Layer: 9
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,84 +27,48 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7247438067956705406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1159, z: 0.0917}
+  m_LocalPosition: {x: 0, y: 0.184, z: 0.0917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7247438069209527142}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7247438069209527141
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7247438069209527142}
-  - component: {fileID: 7247438069209527143}
-  - component: {fileID: 7247438069209527144}
-  - component: {fileID: 7247438069209527145}
-  - component: {fileID: 7175815003062909533}
-  m_Layer: 9
-  m_Name: Pistol
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7247438069209527142
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7247438069209527141}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7247438067956705407}
-  - {fileID: 1143851372137843855}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7247438069209527143
+--- !u!114 &7488516063232754241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7247438069209527141}
+  m_GameObject: {fileID: 7247438067956705406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01fc0a437d1ebdd41b5bfa5fc0d651e6, type: 3}
+  m_Script: {fileID: 11500000, guid: aa65a8015b71c814b9c8e404e5142652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8329559986108347615, guid: 193c519e2e7171a4ab3864f81baae7d9, type: 3}
-  bulletSpeed: 50
-  damage: 1
-  startShootPoint: {fileID: 7247438067956705407}
-  reloadTime: 1.7
-  spread: 1.5
-  layersToShoot:
-    serializedVersion: 2
-    m_Bits: 256
-  fired:
+  EnemyDetected:
     m_PersistentCalls:
       m_Calls: []
-  reloading:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!120 &7247438069209527144
+--- !u!65 &4021410111642164078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247438067956705406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.52, y: 0.44, z: 104.0618}
+  m_Center: {x: 0, y: 0, z: 51}
+--- !u!120 &5910854120821293896
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7247438069209527141}
+  m_GameObject: {fileID: 7247438067956705406}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -194,6 +161,72 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &7247438069209527141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7247438069209527142}
+  - component: {fileID: 7247438069209527143}
+  - component: {fileID: 7247438069209527145}
+  m_Layer: 0
+  m_Name: Pistol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7247438069209527142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247438069209527141}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7247438067956705407}
+  - {fileID: 1143851372137843855}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7247438069209527143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247438069209527141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fc0a437d1ebdd41b5bfa5fc0d651e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8329559986108347615, guid: 193c519e2e7171a4ab3864f81baae7d9, type: 3}
+  shootsBeforeReload: 1
+  bulletSpeed: 50
+  damage: 1
+  betweenShootDelay: 0
+  reloadTime: 1.7
+  spread: 1.5
+  layersToShoot:
+    serializedVersion: 2
+    m_Bits: 256
+  Fired:
+    m_PersistentCalls:
+      m_Calls: []
+  ReloadStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  ReloadEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7247438069209527145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,19 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startShootPoint: {fileID: 7247438067956705407}
---- !u!65 &7175815003062909533
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7247438069209527141}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.52, y: 0.44, z: 104.0618}
-  m_Center: {x: 0, y: 0.19, z: 51}
 --- !u!1001 &600526580529490788
 PrefabInstance:
   m_ObjectHideFlags: 0
