@@ -8,10 +8,11 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField, Min(1)] protected int shootsBeforeReload;
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float damage = 1;
-    [SerializeField] protected float betweenShootDelay;
-    public float reloadTime;
     [Tooltip("0 - без разброса"), Min(0)] public float spread;
     [SerializeField] protected LayerMask layersToShoot;
+
+    public float reloadTime;
+    public float betweenShootDelay;
 
     protected int bulletsInMagazine;
 
@@ -19,9 +20,10 @@ public abstract class Weapon : MonoBehaviour
 
     protected Transform[] shootPointsPositions;
 
-    [HideInInspector] public UnityEvent Fired = new();
-    [HideInInspector] public UnityEvent ReloadStarted = new();
-    [HideInInspector] public UnityEvent ReloadEnded = new();
+    [HideInInspector] public UnityEvent FiredEvent = new();
+    [HideInInspector] public UnityEvent FireDelayEndedEvent = new();
+    [HideInInspector] public UnityEvent ReloadStartedEvent = new();
+    [HideInInspector] public UnityEvent ReloadEndedEvent = new();
 
     public abstract void Shoot();
 
@@ -48,12 +50,13 @@ public abstract class Weapon : MonoBehaviour
         {
             bulletsInMagazine--;
             Shoot();
-            Fired.Invoke();
+            FiredEvent.Invoke();
+            Invoke(nameof(OnFiredDelayEnded), betweenShootDelay);
             _canShoot = false;
 
             if (bulletsInMagazine <= 0)
             {
-                ReloadStarted.Invoke();
+                ReloadStartedEvent.Invoke();
                 Invoke(nameof(Reload), reloadTime);
             }
 
@@ -68,7 +71,12 @@ public abstract class Weapon : MonoBehaviour
     {
         bulletsInMagazine = shootsBeforeReload;
         _canShoot = true;
-        ReloadEnded.Invoke();
+        ReloadEndedEvent.Invoke();
+    }
+
+    private void OnFiredDelayEnded()
+    {
+        FireDelayEndedEvent.Invoke();
     }
 
     private void RefreshAfterShoot()

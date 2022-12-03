@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,6 +257,16 @@ MonoBehaviour:
     weaponPrefab: {fileID: 8506072348624615284, guid: 767994dec14719e48ac22469cee87ec4, type: 3}
     weaponStats:
       <CostToBuy>k__BackingField: 5000
+      <ReduceReloadTimePerLevel>k__BackingField: 0.1
+      <ReduceSpreadPerLevel>k__BackingField: 0.1
+      <BaseReloadUpgradeCost>k__BackingField: 200
+      <BaseSpreadUpgradeCost>k__BackingField: 200
+      <PerLevelReloadCostMultiplier>k__BackingField: 1.3
+      <PerLevelSpreadCostMultiplier>k__BackingField: 1.3
+  - weaponName: Mac One
+    weaponPrefab: {fileID: 3038041139623228919, guid: a39da319e641e0244bf3f474ecf8f933, type: 3}
+    weaponStats:
+      <CostToBuy>k__BackingField: 1000
       <ReduceReloadTimePerLevel>k__BackingField: 0.1
       <ReduceSpreadPerLevel>k__BackingField: 0.1
       <BaseReloadUpgradeCost>k__BackingField: 200

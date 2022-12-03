@@ -19,8 +19,8 @@ public class ShootPoint : MonoBehaviour
         _parentWeapon = GetComponentInParent<Weapon>();
         if (laserDisabledOnReload)
         {
-            _parentWeapon.ReloadStarted.AddListener(() => _lr.enabled = false);
-            _parentWeapon.ReloadEnded.AddListener(() => _lr.enabled = true);
+            _parentWeapon.ReloadStartedEvent.AddListener(() => _lr.enabled = false);
+            _parentWeapon.ReloadEndedEvent.AddListener(() => _lr.enabled = true);
         }
         
     }

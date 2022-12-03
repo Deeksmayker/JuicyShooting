@@ -29,13 +29,14 @@ public class WeaponView : MonoBehaviour
 
         _animator = GetComponentInChildren<Animator>();
         _weapon = GetComponent<Weapon>();
-        _weapon.ReloadStarted.AddListener(SetAnimationToReload);
+        _weapon.ReloadStartedEvent.AddListener(OnReloadStarted);
 
         shootPointsPositions = GetComponentsInChildren<ShootPoint>().Select(shootPoint => shootPoint.transform).ToArray();
 
-        _weapon.ReloadEnded.AddListener(() => _animator.SetBool("Reloading", false));
+        _weapon.ReloadEndedEvent.AddListener(() => _animator.SetBool("Reload", false));
 
-        _weapon.Fired.AddListener(() => StartCoroutine(MakeRecoil()));
+        _weapon.FiredEvent.AddListener(OnFired);
+        _weapon.FireDelayEndedEvent.AddListener(() => _animator.SetBool("Fire", false));
 
         _targetRotation = transform.localRotation;
     }
@@ -70,21 +71,38 @@ public class WeaponView : MonoBehaviour
 
     protected Vector3 GetWeaponLookDirection()
     {
-        return _animator.GetBool("Reloading") ? barrelArmature.up : transform.forward;
+        return _animator.GetBool("Reload") ? barrelArmature.up : transform.forward;
     }
 
-    private void SetAnimationToReload()
+    private void OnReloadStarted()
+    {
+        SetAnimationWithLength("Reload", "ReloadTime", _weapon.reloadTime);
+    }
+
+    private void SetAnimationWithLength(string animationParameterName, string animationLengthParameterName, float neededAnimationLength)
     {
         if (_animator == null)
             return;
 
-        var animationLength = _animator.runtimeAnimatorController.animationClips
-            .Where((clip) => clip.name.Contains("Reload"))
-            .First()
-            .length;
+        var parameterAnimation = _animator.runtimeAnimatorController.animationClips
+            .Where(clip => clip.name.Contains(animationParameterName))
+            .FirstOrDefault();
 
-        _animator.SetFloat("ReloadTime", animationLength / _weapon.reloadTime);
-        _animator.SetBool("Reloading", true);
+        if (parameterAnimation == default(AnimationClip))
+            return;
+
+        var animationLength = parameterAnimation.length;
+
+
+        _animator.SetFloat(animationLengthParameterName, animationLength / neededAnimationLength);
+        _animator.SetBool(animationParameterName, true);
+    }
+
+    private void OnFired()
+    {
+        StartCoroutine(MakeRecoil());
+
+        SetAnimationWithLength("Fire", "FireTime", _weapon.betweenShootDelay);
     }
 
     private Quaternion _targetRotation;

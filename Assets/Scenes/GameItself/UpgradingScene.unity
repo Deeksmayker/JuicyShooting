@@ -1535,14 +1535,10 @@ MonoBehaviour:
   reloadButton: {fileID: 504816205}
   spreadButton: {fileID: 1722778115}
   weaponButton: {fileID: 1430216139}
-  fastTurretBuyButton: {fileID: 0}
-  rocketTurretBuyButton: {fileID: 0}
   moneyCount: {fileID: 1886358271}
   reloadCost: {fileID: 256926652}
   spreadCost: {fileID: 1688491468}
   weaponCost: {fileID: 1968459694}
-  fastTurretCost: {fileID: 0}
-  rocketTurretCost: {fileID: 0}
 --- !u!1 &890306011
 GameObject:
   m_ObjectHideFlags: 0
