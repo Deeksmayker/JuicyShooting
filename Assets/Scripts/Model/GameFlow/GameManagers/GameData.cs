@@ -10,6 +10,7 @@ public class GameData : MonoBehaviour
     private struct WeaponWithStats
     {
         public string weaponName;
+        public Vector3 positionRelatedToPlayer;
         public Weapon weaponPrefab;
         public WeaponUpgradeStats weaponStats;
     }
@@ -76,4 +77,6 @@ public class GameData : MonoBehaviour
             return -1;
         return weaponsWithStats[_currentWeaponIndex + 1].weaponStats.CostToBuy;
     }
+
+    public Vector3 GetWeaponPositionRelatedToPlayer() => weaponsWithStats[_currentWeaponIndex].positionRelatedToPlayer;
 }

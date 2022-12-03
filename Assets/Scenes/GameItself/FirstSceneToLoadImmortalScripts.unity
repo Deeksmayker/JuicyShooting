@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -244,6 +244,7 @@ MonoBehaviour:
   <Level>k__BackingField: 1
   weaponsWithStats:
   - weaponName: Revolver One
+    positionRelatedToPlayer: {x: 0, y: 0, z: 0}
     weaponPrefab: {fileID: 7247438069209527143, guid: b7f6ac04aa0bd2642a36dfc52eb7174f, type: 3}
     weaponStats:
       <CostToBuy>k__BackingField: 0
@@ -254,6 +255,7 @@ MonoBehaviour:
       <PerLevelReloadCostMultiplier>k__BackingField: 1.3
       <PerLevelSpreadCostMultiplier>k__BackingField: 1.3
   - weaponName: Shotgun One
+    positionRelatedToPlayer: {x: 0.41, y: -0.43, z: 2.106}
     weaponPrefab: {fileID: 8506072348624615284, guid: 767994dec14719e48ac22469cee87ec4, type: 3}
     weaponStats:
       <CostToBuy>k__BackingField: 5000
@@ -264,6 +266,7 @@ MonoBehaviour:
       <PerLevelReloadCostMultiplier>k__BackingField: 1.3
       <PerLevelSpreadCostMultiplier>k__BackingField: 1.3
   - weaponName: Mac One
+    positionRelatedToPlayer: {x: 0.39, y: -0.43, z: 2.585}
     weaponPrefab: {fileID: 3038041139623228919, guid: a39da319e641e0244bf3f474ecf8f933, type: 3}
     weaponStats:
       <CostToBuy>k__BackingField: 1000
