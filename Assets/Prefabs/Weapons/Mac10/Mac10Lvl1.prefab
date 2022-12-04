@@ -245,12 +245,12 @@ MonoBehaviour:
   shootsBeforeReload: 30
   bulletSpeed: 70
   damage: 0.5
-  spread: 4
+  spread: 2.5
   layersToShoot:
     serializedVersion: 2
     m_Bits: 256
   reloadTime: 3
-  betweenShootDelay: 0.1
+  betweenShootDelay: 0.15
   FiredEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrelArmature: {fileID: 8950191003988335903}
-  swaySmooth: 2
-  swayMultiplier: 50
+  swaySmooth: 4
+  swayMultiplier: 100
   recoilPower: 7
   recoilDuration: 0.05
   zRecoil: 0.2

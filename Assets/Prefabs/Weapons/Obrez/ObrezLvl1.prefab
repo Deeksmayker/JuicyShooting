@@ -374,22 +374,25 @@ MonoBehaviour:
   shootsBeforeReload: 1
   bulletSpeed: 50
   damage: 0.5
-  betweenShootDelay: 0
-  reloadTime: 2
   spread: 5
   layersToShoot:
     serializedVersion: 2
     m_Bits: 256
-  Fired:
+  reloadTime: 2
+  betweenShootDelay: 0
+  FiredEvent:
     m_PersistentCalls:
       m_Calls: []
-  ReloadStarted:
+  FireDelayEndedEvent:
     m_PersistentCalls:
       m_Calls: []
-  ReloadEnded:
+  ReloadStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  bulletsPerShootCount: 10
+  ReloadEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  bulletsPerShootCount: 5
 --- !u!114 &7247438069209527145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,8 +406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrelArmature: {fileID: 4429137604542441425}
-  swaySmooth: 2
-  swayMultiplier: 50
+  swaySmooth: 3
+  swayMultiplier: 100
   recoilPower: 60
   recoilDuration: 0.1
   zRecoil: 0.5

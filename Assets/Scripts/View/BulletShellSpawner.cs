@@ -17,7 +17,7 @@ public class BulletShellSpawner : MonoBehaviour
     {
         var shell = Instantiate(shellToSpawn, shellSpawnPoint.position, Quaternion.identity);
 
-        shell.rb.AddRelativeForce(new Vector3(Random.Range(2, 4), Random.Range(2, 4)), ForceMode.Impulse);
-        shell.rb.AddRelativeTorque(new Vector3(Random.Range(2, 4), Random.Range(2, 4)), ForceMode.Impulse);
+        shell.rb.AddRelativeForce(new Vector3(Random.Range(2, 4) * Mathf.Sign(transform.localScale.x), Random.Range(2, 4)), ForceMode.Impulse);
+        shell.rb.AddRelativeTorque(new Vector3(Random.Range(2, 4), Random.Range(2, 4), Random.Range(2, 4)), ForceMode.Impulse);
     }
 }

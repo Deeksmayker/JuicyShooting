@@ -19,6 +19,8 @@ public class WeaponView : MonoBehaviour
     private Weapon _weapon;
     private Transform[] shootPointsPositions;
 
+    private Vector3 _startLocalPosition;
+
     private void Start()
     {
         _lasers = GetComponentsInChildren<LineRenderer>();
@@ -39,6 +41,8 @@ public class WeaponView : MonoBehaviour
         _weapon.FireDelayEndedEvent.AddListener(() => _animator.SetBool("Fire", false));
 
         _targetRotation = transform.localRotation;
+
+        _startLocalPosition = transform.localPosition;
     }
 
     private void Update()
@@ -141,7 +145,7 @@ public class WeaponView : MonoBehaviour
             t += Time.deltaTime / recoilDuration;
 
             transform.localRotation = Quaternion.Slerp(_targetRotation, afterRecoilQuaternion, t);
-            transform.localPosition = Vector3.Slerp(Vector3.zero, afterRecoilLocalPosition, t);
+            transform.localPosition = Vector3.Slerp(_startLocalPosition, afterRecoilLocalPosition, t);
 
             timer -= Time.deltaTime;
             yield return null;
@@ -155,7 +159,7 @@ public class WeaponView : MonoBehaviour
         {
             t += Time.deltaTime / recoilDuration;
 
-            transform.localPosition = Vector3.Slerp(afterRecoilLocalPosition, Vector3.zero, t);
+            transform.localPosition = Vector3.Slerp(afterRecoilLocalPosition, _startLocalPosition, t);
 
             timer -= Time.deltaTime;
             yield return null;
