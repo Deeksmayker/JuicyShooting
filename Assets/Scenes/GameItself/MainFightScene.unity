@@ -1828,12 +1828,33 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 712461080685371194, guid: 3f8e53545f5f7964dbfdb07973e5d002, type: 3}
   m_PrefabInstance: {fileID: 712461079470414423}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 712461079470414425}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 460f0c7a93c13b3489ce2fda6302790a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &712461079470414425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 712461080685371195, guid: 3f8e53545f5f7964dbfdb07973e5d002, type: 3}
+  m_PrefabInstance: {fileID: 712461079470414423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &712461079470414426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712461079470414425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e055192389b18c4598094aef2fee111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPushPower: 2000
+  timeToChangeEffectColor: 0.05
+  explodeRadiusEffect: {fileID: 857499546323587084, guid: b03f00ff498a5b146936d051e1802e69, type: 3}
+  explosionParticles: {fileID: 904197819780763495, guid: 4c9ffae457c8aca4a8adc057ed72d912, type: 3}
 --- !u!1001 &1021831631213970660
 PrefabInstance:
   m_ObjectHideFlags: 0

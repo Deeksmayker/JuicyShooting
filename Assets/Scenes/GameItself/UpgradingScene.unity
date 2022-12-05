@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 29109611}
   - component: {fileID: 29109610}
   m_Layer: 5
-  m_Name: DualUsesCost
+  m_Name: ExplosiveFrequencyCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Increase\n Uses Count"
+  m_text: Upgrade Frequency
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.7
+  m_fontSize: 48.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1684,7 +1684,7 @@ GameObject:
   - component: {fileID: 412487442}
   - component: {fileID: 412487441}
   m_Layer: 5
-  m_Name: DualUpgradeDuration
+  m_Name: ExplosiveUpgradeRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1755,7 +1755,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 412487442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843817441}
+        m_TargetAssemblyTypeName: UpgradingMenuUiManager, Assembly-CSharp
+        m_MethodName: UpgradeExplosionRadius
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &412487442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2369,7 +2381,7 @@ GameObject:
   - component: {fileID: 525453559}
   - component: {fileID: 525453558}
   m_Layer: 5
-  m_Name: DualDurationCost
+  m_Name: ExplosiveRadiusCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2576,7 +2588,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 560356973}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843817441}
+        m_TargetAssemblyTypeName: UpgradingMenuUiManager, Assembly-CSharp
+        m_MethodName: BuyExplosionPerk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &560356973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2628,7 +2652,7 @@ GameObject:
   - component: {fileID: 603495401}
   - component: {fileID: 603495400}
   m_Layer: 5
-  m_Name: ExplosiveUpgradeUses
+  m_Name: ExplosiveUpgradeFrequency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2699,7 +2723,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 603495401}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843817441}
+        m_TargetAssemblyTypeName: UpgradingMenuUiManager, Assembly-CSharp
+        m_MethodName: UpgradeExplosionFrequency
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &603495401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3007,7 +3043,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade Duration
+  m_text: Upgrade Radius
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3212,10 +3248,14 @@ MonoBehaviour:
   buyExplosiveButton: {fileID: 560356972}
   dualDurationButton: {fileID: 1150332558}
   dualUsesButton: {fileID: 2021072831}
+  explosiveFrequencyButton: {fileID: 603495400}
+  explosiveRadiusButton: {fileID: 412487441}
   buyDualCost: {fileID: 73059158}
   buyExplosiveCost: {fileID: 197007075}
   dualDurationCost: {fileID: 1668404428}
   dualUsesCost: {fileID: 462888494}
+  explosiveFrequencyCost: {fileID: 29109610}
+  explosiveRadiusCost: {fileID: 525453558}
 --- !u!1 &890306011
 GameObject:
   m_ObjectHideFlags: 0

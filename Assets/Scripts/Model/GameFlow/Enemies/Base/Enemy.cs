@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         _ch.enabled = false;
         _dead = true;

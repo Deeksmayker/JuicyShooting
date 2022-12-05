@@ -27,12 +27,16 @@ public class UpgradingMenuUiManager : MonoBehaviour
     [SerializeField] private Button buyExplosiveButton;
     [SerializeField] private Button dualDurationButton;
     [SerializeField] private Button dualUsesButton;
+    [SerializeField] private Button explosiveFrequencyButton;
+    [SerializeField] private Button explosiveRadiusButton;
 
     [Header("Perks Text fields")]
     [SerializeField] private TextMeshProUGUI buyDualCost;
     [SerializeField] private TextMeshProUGUI buyExplosiveCost;
     [SerializeField] private TextMeshProUGUI dualDurationCost;
     [SerializeField] private TextMeshProUGUI dualUsesCost;
+    [SerializeField] private TextMeshProUGUI explosiveFrequencyCost;
+    [SerializeField] private TextMeshProUGUI explosiveRadiusCost;
 
     private WeaponUpgradeStats _weaponStats;
     private Weapon weaponPrefab;
@@ -102,6 +106,28 @@ public class UpgradingMenuUiManager : MonoBehaviour
         UpdateButtonsAndMoney();
     }
 
+    public void BuyExplosionPerk()
+    {
+        GameData.Instance.RemoveMoney(GameData.Instance.PlayerExplosionPerk.BuyPerkCost);
+        GameData.Instance.PlayerExplosionPerk.BuyExplosionPerk();
+
+        CheckPerksButtonsVisibility();
+        UpdateButtonsAndMoney();
+    }
+
+    public void UpgradeExplosionFrequency()
+    {
+        GameData.Instance.RemoveMoney(GameData.Instance.PlayerExplosionPerk.GetFrequencyUpgradeCost());
+        GameData.Instance.PlayerExplosionPerk.UpgradeFrequency();
+        UpdateButtonsAndMoney();
+    }
+    public void UpgradeExplosionRadius()
+    {
+        GameData.Instance.RemoveMoney(GameData.Instance.PlayerExplosionPerk.GetRadiusUpgradeCost());
+        GameData.Instance.PlayerExplosionPerk.UpgradeRadius();
+        UpdateButtonsAndMoney();
+    }
+
     private void UpdateButtonsAndMoney()
     {
         UpdateMoneyText();
@@ -131,11 +157,20 @@ public class UpgradingMenuUiManager : MonoBehaviour
             UpdateButtonWithCost(dualUsesCost, GameData.Instance.PlayerDualPerk.GetUsesCountUpgradeCost(),
                 GameData.Instance.PlayerDualPerk.UsesCount, dualUsesButton, 3);
         }
+
+        if (GameData.Instance.PlayerExplosionPerk.PerkAvaliable())
+        {
+            UpdateButtonWithCost(explosiveFrequencyCost, GameData.Instance.PlayerExplosionPerk.GetFrequencyUpgradeCost(),
+                GameData.Instance.PlayerExplosionPerk.FrequencyLevel, explosiveFrequencyButton);
+            UpdateButtonWithCost(explosiveRadiusCost, GameData.Instance.PlayerExplosionPerk.GetRadiusUpgradeCost(),
+                GameData.Instance.PlayerExplosionPerk.RadiusLevel, explosiveRadiusButton);
+        }
     }
 
     private void CheckPerksButtonsVisibility()
     {
         SetPerkBuyButton(buyDualButton, buyDualCost, GameData.Instance.PlayerDualPerk, new[] { dualDurationButton, dualUsesButton });
+        SetPerkBuyButton(buyExplosiveButton, buyExplosiveCost, GameData.Instance.PlayerExplosionPerk, new[] { explosiveFrequencyButton, explosiveRadiusButton });
     }
 
     private void SetPerkBuyButton(Button buyButton, TextMeshProUGUI buyPerkText, PlayerPerk perk, params Button[] upgradePerkButtons)
@@ -146,6 +181,10 @@ public class UpgradingMenuUiManager : MonoBehaviour
                 b.gameObject.SetActive(false);
             buyButton.gameObject.SetActive(true);
             buyPerkText.text = perk.BuyPerkCost.ToString();
+
+            if (perk.BuyPerkCost > GameData.Instance.Money)
+                buyButton.interactable = false;
+
             return;
         }
 

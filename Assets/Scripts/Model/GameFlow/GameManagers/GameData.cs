@@ -25,6 +25,7 @@ public class GameData : MonoBehaviour
     public Weapon CurrentWeapon { get; private set; }
     public WeaponUpgradeStats WeaponStats { get; private set; }
     [field: SerializeField] public DualPerk PlayerDualPerk { get; private set; }
+    [field: SerializeField] public ExplosionPerk PlayerExplosionPerk { get; private set; }
 
     [SerializeField] private List<SpawnEnemiesData> levelsEnemySpawnData = new();
 

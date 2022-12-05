@@ -64,5 +64,11 @@ namespace Assets.Scripts
         {
             return new Vector3(Random.Range(-randomRange, randomRange), 0, Random.Range(-randomRange, randomRange));
         }
+
+        public static void SetWeaponStats(Weapon weapon)
+        {
+            weapon.reloadTime -= GameData.Instance.WeaponStats.GetReloadTimeToReduce();
+            weapon.spread -= GameData.Instance.WeaponStats.GetSpreadToReduce();
+        }
     }
 }

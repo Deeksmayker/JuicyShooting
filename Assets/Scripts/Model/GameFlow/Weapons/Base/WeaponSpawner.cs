@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Linq;
 using UnityEngine;
 
@@ -9,7 +10,6 @@ public class WeaponSpawner : MonoBehaviour
         var weapon = Instantiate(GameData.Instance.CurrentWeapon, gameObject.transform);
         weapon.transform.localPosition = Vector3.zero;
 
-        weapon.reloadTime -= GameData.Instance.WeaponStats.GetReloadTimeToReduce();
-        weapon.spread -= GameData.Instance.WeaponStats.GetSpreadToReduce();
+        Utils.SetWeaponStats(weapon);
     }
 }

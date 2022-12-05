@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(WeaponSpawner))]
@@ -21,6 +22,8 @@ public class DualPerkInGameHandler : MonoBehaviour
         _secondHandWeapon = Instantiate(GameData.Instance.CurrentWeapon, gameObject.transform);
         _secondHandWeapon.transform.localPosition = new Vector3(-transform.localPosition.x * 2, 0, 0);
         _secondHandWeapon.transform.localScale = new Vector3(-1, 1, 1);
+
+        Utils.SetWeaponStats(_secondHandWeapon);
 
         Invoke(nameof(DisableDualPerk), GameData.Instance.PlayerDualPerk.GetCurrentDuration());
     }

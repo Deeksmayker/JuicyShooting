@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<BodyPart>(out var bodyPart))
         {
-            bodyPart.OnBulletHit(damage, _lastFrameVelocity);
+            bodyPart.OnBulletHit(damage, _lastFrameVelocity, transform.position);
         }
 
         foreach (var spreadedParticles in collision.gameObject.GetComponents<MonoBehaviour>().OfType<ISpreadParticles>())
