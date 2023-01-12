@@ -1,18 +1,25 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    [SerializeField] private Transform ground, firstRectanglePoint, secondRectanglePoint;
+    [SerializeField] private Transform ground;
+    [SerializeField] private Transform leftBridgeFirstSpawnPoint, leftBridgeSecondSpawnPoint;
+    [SerializeField] private Transform middleBridgeFirstSpawnPoint, middleBridgeSecondSpawnPoint;
+    [SerializeField] private Transform rightBridgeFirstSpawnPoint, rightBridgeSecondSpawnPoint;
 
-    private float delayTimer;
+    [Header("Visual")]
+    [SerializeField] private ParticleSystem enemyAppearingParticles;
+
+    private float _delayTimer;
 
     private SpawnEnemiesData _enemiesSpawnData;
     private int _spawnsIndex;
     private int _enemiesOnSceneCount;
 
-    public UnityEvent AllEnemiesDied = new();
+    [HideInInspector] public UnityEvent AllEnemiesDied = new();
     
     void Start()
     {
@@ -25,31 +32,62 @@ public class EnemySpawnManager : MonoBehaviour
     {
         if (_spawnsIndex == _enemiesSpawnData.EnemySpawns.Count)
             return;
-        delayTimer += Time.deltaTime;
+        _delayTimer += Time.deltaTime;
 
-        if (delayTimer > _enemiesSpawnData.EnemySpawns[_spawnsIndex].spawnDelay)
+        if (_delayTimer > _enemiesSpawnData.EnemySpawns[_spawnsIndex].spawnDelay)
         {
-            SpawnEnemies();
-            delayTimer = 0;
+            ChooseSpawnLocationAndSpawnEnemies();
+            _delayTimer = 0;
             _enemiesOnSceneCount += _enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn.Count();
             _spawnsIndex++;
         }
     }
 
-    private void SpawnEnemies()
+    private void ChooseSpawnLocationAndSpawnEnemies()
+    {
+        var firstRectanglePoint = Vector3.zero;
+        var secondRectanglePoint = Vector3.zero;
+        
+        switch (_enemiesSpawnData.EnemySpawns[_spawnsIndex].spawnLocation)
+        {
+            case SpawnEnemiesData.SpawnLocations.MiddleBridge:
+                firstRectanglePoint = middleBridgeFirstSpawnPoint.position;
+                secondRectanglePoint = middleBridgeSecondSpawnPoint.position;
+                break;
+            case SpawnEnemiesData.SpawnLocations.LeftBridge:
+                firstRectanglePoint = leftBridgeFirstSpawnPoint.position;
+                secondRectanglePoint = leftBridgeSecondSpawnPoint.position;
+                break;
+            case SpawnEnemiesData.SpawnLocations.RightBridge:
+                firstRectanglePoint = rightBridgeFirstSpawnPoint.position;
+                secondRectanglePoint = rightBridgeSecondSpawnPoint.position;
+                break;
+        }
+        
+        StartCoroutine(SpawnEnemies(firstRectanglePoint, secondRectanglePoint));
+    }
+
+    private IEnumerator SpawnEnemies(Vector3 firstRectanglePoint, Vector3 secondRectanglePoint)
     {
         foreach (var enemyType in _enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn)
         {
+            var randomSpawnPosition = GetRandomSpawnPosition(firstRectanglePoint, secondRectanglePoint);
+            
+            MakeEnemyAppearingEffect(randomSpawnPosition);
+            yield return new WaitForSeconds(1);
+            
             switch (enemyType)
             {
                 case SpawnEnemiesData.EnemyTypes.NormalZombie:
-                    Instantiate(_enemiesSpawnData.EnemyPrefabs.normalZombie, GetRandomSpawnPosition(), Quaternion.identity);
-                    break;
-                default:
+                    Instantiate(_enemiesSpawnData.EnemyPrefabs.normalZombie, randomSpawnPosition, Quaternion.identity);
                     break;
             }
-
         }
+    }
+
+    private void MakeEnemyAppearingEffect(Vector3 position)
+    {
+        Instantiate(enemyAppearingParticles, position, Quaternion.identity);
     }
 
     public void OnEnemyDied()
@@ -62,13 +100,13 @@ public class EnemySpawnManager : MonoBehaviour
         }
     }
 
-    private Vector3 GetRandomSpawnPosition()
+    private Vector3 GetRandomSpawnPosition(Vector3 firstRectanglePoint, Vector3 secondRectanglePoint)
     {
         return new Vector3
             (
-            Random.Range(firstRectanglePoint.position.x, secondRectanglePoint.position.x),
+            Random.Range(firstRectanglePoint.x, secondRectanglePoint.x),
             ground.position.y + 0.5f,
-            Random.Range(firstRectanglePoint.position.z, secondRectanglePoint.position.z)
+            Random.Range(firstRectanglePoint.z, secondRectanglePoint.z)
             );
     }
 }

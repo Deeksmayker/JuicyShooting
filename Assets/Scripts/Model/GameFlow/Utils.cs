@@ -37,7 +37,8 @@ namespace Assets.Scripts
         private static bool _timeSlowed;
         private static bool _dontResumeTime;
         public static IEnumerator SlowTime(float timeFlow, float duration)
-        { 
+        {
+            yield break;
             if (_timeSlowed)
                 _dontResumeTime = true;
 

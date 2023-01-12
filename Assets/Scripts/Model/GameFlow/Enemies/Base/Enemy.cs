@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
         if (_dead)
             return;
         var direction = (_pointToGo - transform.position).normalized;
-        direction.y = -1;
+        direction.y = -10;
         _ch.Move(direction * speed * Time.deltaTime);
         transform.LookAt(_pointToGo, Vector3.up);
     }
@@ -75,7 +75,35 @@ public class Enemy : MonoBehaviour
         _dead = true;
         Utils.EnableRagdoll(gameObject);
         EnemyDied.Invoke();
+        
+        Invoke(nameof(DisableComponentsAfterDeath), Random.Range(5, 15));
     }
 
-   
+    private void DisableComponentsAfterDeath()
+    {
+        var joints = GetComponentsInChildren<Joint>();
+        var rigidbodies = GetComponentsInChildren<Rigidbody>();
+        var colliders = GetComponentsInChildren<Collider>();
+        var scripts = GetComponentsInChildren<MonoBehaviour>();
+        
+        for (var i = 0; i < joints.Length; i++)
+        {
+            Destroy(joints[i]);
+        }
+        
+        for (var i = 0; i < rigidbodies.Length; i++)
+        {
+            Destroy(rigidbodies[i]);
+        }
+        
+        for (var i = 0; i < colliders.Length; i++)
+        {
+            Destroy(colliders[i]);
+        }
+        
+        for (var i = 0; i < scripts.Length; i++)
+        {
+            Destroy(scripts[i]);
+        }
+    }
 }

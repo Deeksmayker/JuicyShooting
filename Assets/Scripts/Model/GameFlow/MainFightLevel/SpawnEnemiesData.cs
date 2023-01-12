@@ -11,9 +11,17 @@ public class SpawnEnemiesData : ScriptableObject
         NormalZombie
     }
 
-    [Serializable]
-    public class EnemiesSpawn
+    public enum SpawnLocations
     {
+        MiddleBridge,
+        LeftBridge,
+        RightBridge
+    }
+
+    [Serializable]
+    public struct EnemiesSpawn
+    {
+        public SpawnLocations spawnLocation;
         public EnemyTypes[] enemiesToSpawn;
         public float spawnDelay;
     }

@@ -791,7 +791,7 @@ FixedJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797208449677588633}
-  m_ConnectedBody: {fileID: 6287261757944329815}
+  m_ConnectedBody: {fileID: 6521797876339840087}
   m_ConnectedArticulationBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1005,7 +1005,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a1b4b8144e2a4054199287da62cdd0da, type: 3}
   m_PrefabInstance: {fileID: 5544060208599121661}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &6287261757944329815
+--- !u!54 &6521797876339840087
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1016,12 +1016,12 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!143 &7583534131228476377
+--- !u!143 &8255952895876673914
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1033,7 +1033,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.29
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1076,6 +1076,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallParticles: {fileID: 8167067520147848454, guid: d3ebaec6953a2cc42b66d4ac0f510917, type: 3}
   hugeParticles: {fileID: 2229625050855817978, guid: d07833bbc9aeb254f942e15af155c3ff, type: 3}
+  hitPopup: {fileID: -145957732484053257, guid: 10e5914769f8d0140932b78b02f24037, type: 3}
+  colorOnWeakPoint: {r: 1, g: 0.2216981, b: 0.2216981, a: 0}
+  textOnWeakPoint: HEADSHOT
+  colorOnNormalPoint: {r: 1, g: 0.7997738, b: 0.23113209, a: 0}
+  textOnNormalPoint: HIT
 --- !u!1 &5577552643432261715 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 114569047881782958, guid: a1b4b8144e2a4054199287da62cdd0da, type: 3}
