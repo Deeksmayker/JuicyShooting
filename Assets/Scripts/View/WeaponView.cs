@@ -21,8 +21,18 @@ public class WeaponView : MonoBehaviour
 
     private Vector3 _startLocalPosition;
 
+    private GameInputHandler _input;
+
     private void Start()
     {
+        _input = FindObjectOfType<GameInputHandler>();
+
+        if (_input == null)
+        {
+            Debug.LogError("No GameInputHandler in scene, script will be destroyed");
+            Destroy(this);
+        }
+        
         _lasers = GetComponentsInChildren<LineRenderer>();
         for (var i = 0; i < _lasers.Length; i++)
         {
@@ -121,8 +131,8 @@ public class WeaponView : MonoBehaviour
         {
             return;
         }
-        var mouseX = Input.GetAxisRaw("Mouse X") * swayMultiplier;
-        var mouseY = Input.GetAxisRaw("Mouse Y") * swayMultiplier;
+        var mouseX = _input.touchDelta.x * swayMultiplier;
+        var mouseY = _input.touchDelta.y * swayMultiplier;
 
         _rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);
         _rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);

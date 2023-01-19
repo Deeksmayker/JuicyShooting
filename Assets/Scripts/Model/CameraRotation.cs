@@ -11,8 +11,18 @@ public class CameraRotation : MonoBehaviour
     private float _xAngleTemp;
     private float _yAngleTemp;
 
+    private GameInputHandler _input;
+
     private void Awake()
     {
+        _input = FindObjectOfType<GameInputHandler>();
+
+        if (_input == null)
+        {
+            Debug.LogError("No GameInputHandler in scene, script will be destroyed");
+            Destroy(this);
+        }
+        
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
@@ -25,20 +35,20 @@ public class CameraRotation : MonoBehaviour
 
     private void TurnInTouchAngle()
     {
-        if (!Input.GetMouseButton(0))
+        if (!_input.touching)
         {
             // RotateWeaponToAngle();
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (_input.isTouched)
         {
-            _firstTouchPosition = Input.mousePosition;
+            _firstTouchPosition = _input.touchPosition;
             _xAngleTemp = _xAngle;
             _yAngleTemp = _yAngle;
         }
 
-        _currentTouchPosition = Input.mousePosition;
+        _currentTouchPosition = _input.touchPosition;
 
         _xAngle = _xAngleTemp + (_currentTouchPosition.x - _firstTouchPosition.x) * rotationSpeed / Screen.width;
         _yAngle = _yAngleTemp + (_currentTouchPosition.y - _firstTouchPosition.y) * rotationSpeed / Screen.height;

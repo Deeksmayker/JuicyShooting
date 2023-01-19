@@ -1,10 +1,8 @@
 {
-    "name": "GameFlow",
+    "name": "Control",
     "rootNamespace": "",
     "references": [
-        "GUID:271a200b5ea3919428720f72e6758994",
-        "GUID:6cd69eeba7de20e498c61927095c2e46",
-        "GUID:df7edb0671559ff45bd1935e53452f16"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

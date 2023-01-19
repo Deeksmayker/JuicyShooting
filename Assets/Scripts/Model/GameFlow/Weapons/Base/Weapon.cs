@@ -8,7 +8,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField, Min(1)] protected int shootsBeforeReload;
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected float damage = 1;
-    [Tooltip("0 - без разброса"), Min(0)] public float spread;
+    [Tooltip("0 - Р±РµР· СЂР°Р·Р±СЂРѕСЃР°"), Min(0)] public float spread;
     [SerializeField] protected LayerMask layersToShoot;
 
     public float reloadTime;
@@ -25,10 +25,20 @@ public abstract class Weapon : MonoBehaviour
     [HideInInspector] public UnityEvent ReloadStartedEvent = new();
     [HideInInspector] public UnityEvent ReloadEndedEvent = new();
 
+    private GameInputHandler _input;
+
     public abstract void Shoot();
 
     protected virtual void Awake()
     {
+        _input = FindObjectOfType<GameInputHandler>();
+
+        if (_input == null)
+        {
+            Debug.LogError("No GameInputHandler in scene, script will be destroyed");
+            Destroy(this);
+        }
+        
         bulletsInMagazine = shootsBeforeReload;
 
         foreach (var shootPoint in GetComponentsInChildren<ShootPoint>())
@@ -46,7 +56,7 @@ public abstract class Weapon : MonoBehaviour
 
     private void CheckInputAndReloadTimeAndShoot()
     {
-        if (_canShoot && Input.GetMouseButton(0))
+        if (_canShoot && _input.touching)
         {
             bulletsInMagazine--;
             Shoot();
