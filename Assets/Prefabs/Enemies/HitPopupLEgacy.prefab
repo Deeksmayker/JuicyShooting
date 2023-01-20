@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2202849443904883697}
   - component: {fileID: -145957732484053257}
   m_Layer: 0
-  m_Name: HitPopup
+  m_Name: HitPopupLEgacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
