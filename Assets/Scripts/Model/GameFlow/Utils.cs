@@ -28,6 +28,7 @@ namespace Assets.Scripts
 
         public static void EnableRagdoll(GameObject gameObject)
         {
+            gameObject.GetComponent<Animator>().enabled = false;
             foreach (var rb in gameObject.GetComponentsInChildren<Rigidbody>())
             {
                 rb.isKinematic = false;

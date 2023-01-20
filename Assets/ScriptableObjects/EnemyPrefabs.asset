@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dffec63976a6bd4f8fa9904862df23f, type: 3}
   m_Name: EnemyPrefabs
   m_EditorClassIdentifier: 
-  normalZombie: {fileID: 655657233, guid: 18a5fa2b07fa1294d8ababf7fde6a5a8, type: 3}
+  normalZombies:
+  - {fileID: 6878472884856097486, guid: cf661efe07bf3994e94ebf30aea9f774, type: 3}

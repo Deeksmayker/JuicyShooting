@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    [ContextMenu("Kill Enemy")]
     public void Die()
     {
         _ch.enabled = false;

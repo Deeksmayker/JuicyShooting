@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Pool;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -20,9 +21,20 @@ public class EnemySpawnManager : MonoBehaviour
     private int _enemiesOnSceneCount;
 
     [HideInInspector] public UnityEvent AllEnemiesDied = new();
-    
+
+    private ObjectPool<Enemy> _enemiesPool; 
+
     void Start()
     {
+        _enemiesPool = new ObjectPool<Enemy>(
+            () => Instantiate(_enemiesSpawnData.GetRandomNormalZombie()),
+            (enemy) => enemy.gameObject.SetActive(true),
+            (enemy) => enemy.gameObject.SetActive(false),
+            (enemy) => Destroy(enemy.gameObject),
+            true,
+            100,
+            100);
+        
         _enemiesSpawnData = GameData.Instance.GetCurrentEnemySpawnData();
 
         Enemy.EnemyDied.AddListener(OnEnemyDied);
@@ -79,7 +91,8 @@ public class EnemySpawnManager : MonoBehaviour
             switch (enemyType)
             {
                 case SpawnEnemiesData.EnemyTypes.NormalZombie:
-                    Instantiate(_enemiesSpawnData.EnemyPrefabs.normalZombie, randomSpawnPosition, Quaternion.identity);
+                    var zombie = _enemiesPool.Get();
+                    zombie.transform.position = randomSpawnPosition;
                     break;
             }
         }
