@@ -18,6 +18,10 @@ public class GameData : MonoBehaviour
     public static GameData Instance;
 
     [field: SerializeField, Min(0)] public int Money { get; private set; } = 1000;
+
+    public int MoneyByKill { get; } = 20;
+    public int MoneyByKillInWeakPoint { get; } = 20;
+    
     [field: SerializeField] public int Level { get; private set; } = 1;
 
     [SerializeField] private WeaponWithStats[] weaponsWithStats;
@@ -40,8 +44,21 @@ public class GameData : MonoBehaviour
 
         CurrentWeapon = weaponsWithStats[_currentWeaponIndex].weaponPrefab;
         WeaponStats = weaponsWithStats[_currentWeaponIndex].weaponStats;
+        
+        Enemy.EnemyDied.AddListener(HandleKill);
+        Enemy.EnemyDiedByWeakPoint.AddListener(HandleWeakPointKill);
     }
 
+    public void HandleKill()
+    {
+        AddMoney(MoneyByKill);
+    }
+
+    public void HandleWeakPointKill()
+    {
+        AddMoney(MoneyByKillInWeakPoint);
+    }
+    
     public void AddMoney(int value)
     {
         Money += value;
@@ -57,6 +74,26 @@ public class GameData : MonoBehaviour
     public void SetLevelToNext()
     {
         Level++;
+    }
+
+    public void SaveGame()
+    {
+        
+    }
+
+    public void LoadSaveData()
+    {
+        
+    }
+
+    public void ShowAdForReward()
+    {
+        
+    }
+
+    public void ShowAd()
+    {
+        
     }
 
     public SpawnEnemiesData GetCurrentEnemySpawnData()

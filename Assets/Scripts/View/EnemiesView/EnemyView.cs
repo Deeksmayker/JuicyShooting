@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyView : MonoBehaviour
 {
@@ -11,6 +13,15 @@ public class EnemyView : MonoBehaviour
     //[SerializeField] private string textOnWeakPoint;
     [SerializeField] private Color colorOnNormalPoint;
     //[SerializeField] private string textOnNormalPoint;
+
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        
+        _animator.SetInteger("AnimationNumber", Random.Range(1, 4));
+    }
 
     public void MakeVisualEffectsOnHit(bool weakPoint, Vector3 pos)
     {

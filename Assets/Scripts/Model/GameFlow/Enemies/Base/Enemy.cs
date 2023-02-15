@@ -9,8 +9,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private int weakPointsCount;
 
-    [SerializeField] private int moneyByKill, moneyByKillInWeakPoint;
-
     private Vector3 _pointToGo;
 
     private CharacterController _ch;
@@ -57,13 +55,12 @@ public class Enemy : MonoBehaviour
             if (isWeakPoint)
             {
                 EnemyDiedByWeakPoint.Invoke();
-                GameData.Instance.AddMoney(moneyByKillInWeakPoint);
+                //GameData.Instance.HandleKill(true);
             }
 
             else
             {
-                EnemyDied.Invoke();
-                GameData.Instance.AddMoney(moneyByKill);
+               // GameData.Instance.HandleKill(false);
             }
             Die();
         }
@@ -72,6 +69,9 @@ public class Enemy : MonoBehaviour
     [ContextMenu("Kill Enemy")]
     public void Die()
     {
+        if (_dead)
+            return;
+        
         _ch.enabled = false;
         _dead = true;
         Utils.EnableRagdoll(gameObject);

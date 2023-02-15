@@ -18,7 +18,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     private SpawnEnemiesData _enemiesSpawnData;
     private int _spawnsIndex;
-    private int _enemiesOnSceneCount;
+    private int _enemiesCount;
 
     [HideInInspector] public UnityEvent AllEnemiesDied = new();
 
@@ -37,6 +37,12 @@ public class EnemySpawnManager : MonoBehaviour
         
         _enemiesSpawnData = GameData.Instance.GetCurrentEnemySpawnData();
 
+        foreach (var enemies in _enemiesSpawnData.EnemySpawns)
+        {
+            _enemiesCount += enemies.enemiesToSpawn.Length;
+        }
+        //Debug.Log(_enemiesCount);
+
         Enemy.EnemyDied.AddListener(OnEnemyDied);
     }
 
@@ -50,7 +56,7 @@ public class EnemySpawnManager : MonoBehaviour
         {
             ChooseSpawnLocationAndSpawnEnemies();
             _delayTimer = 0;
-            _enemiesOnSceneCount += _enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn.Count();
+            //_enemiesCount += _enemiesSpawnData.EnemySpawns[_spawnsIndex].enemiesToSpawn.Count();
             _spawnsIndex++;
         }
     }
@@ -105,11 +111,12 @@ public class EnemySpawnManager : MonoBehaviour
 
     public void OnEnemyDied()
     {
-        _enemiesOnSceneCount--;
+        _enemiesCount--;
+        Debug.Log(_enemiesCount);
 
-        if (_enemiesOnSceneCount == 0 && _spawnsIndex == _enemiesSpawnData.EnemySpawns.Count)
+        if (_enemiesCount == 0)
         {
-            //AllEnemiesDied.Invoke();
+            AllEnemiesDied.Invoke();
         }
     }
 

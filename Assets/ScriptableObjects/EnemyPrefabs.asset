@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalZombies:
   - {fileID: 6878472884856097486, guid: cf661efe07bf3994e94ebf30aea9f774, type: 3}
+  - {fileID: 8604181743524374585, guid: b663de4a4fecad5499dce2579e042da0, type: 3}
+  - {fileID: 4396524003843042138, guid: dcfdef7ae85fcb94bb8a2c5effa2aaf6, type: 3}
+  - {fileID: 2408499176481932490, guid: 99413bab940353e42ad69b3e4dfbd49d, type: 3}
+  - {fileID: 5902677973053901046, guid: e9f3fe3bf07debd4db6ba6ab2070e4bb, type: 3}

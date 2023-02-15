@@ -6,7 +6,7 @@ public class ExplosionPerkInGameHandler : MonoBehaviour
     [SerializeField] private float explosionPushPower;
 
     [SerializeField] private float timeToChangeEffectColor;
-    [SerializeField] private GameObject explodeRadiusEffect;
+    //[SerializeField] private GameObject explodeRadiusEffect;
     [SerializeField] private ParticleSystem explosionParticles;
 
     private int _hitsBeforeExplosion;
@@ -23,7 +23,7 @@ public class ExplosionPerkInGameHandler : MonoBehaviour
 
     private void OnWeakPointHit(Vector3 hitPosition)
     {
-        Debug.Log(_hitsBeforeExplosion);
+        //Debug.Log(_hitsBeforeExplosion);
         _hitsBeforeExplosion--;
 
         if (_hitsBeforeExplosion > 0)
@@ -35,7 +35,7 @@ public class ExplosionPerkInGameHandler : MonoBehaviour
 
     private void MakeExplosion(Vector3 startPos)
     {
-        StartCoroutine(MakeExplosionEffect(startPos));
+        MakeExplosionEffect(startPos);
 
         var targetsInRadius = Physics.OverlapSphere(startPos, GameData.Instance.PlayerExplosionPerk.GetCurrentRadius());
 
@@ -48,15 +48,15 @@ public class ExplosionPerkInGameHandler : MonoBehaviour
 
             if (target.TryGetComponent<Rigidbody>(out var rb))
             {
-                Debug.Log("finds rb");
+                //Debug.Log("finds rb");
                 rb.AddExplosionForce(explosionPushPower, startPos, GameData.Instance.PlayerExplosionPerk.GetCurrentRadius());
             }
         }
     }
 
-    private IEnumerator MakeExplosionEffect(Vector3 pos)
+    private void MakeExplosionEffect(Vector3 pos)
     {
-        var diameter = GameData.Instance.PlayerExplosionPerk.GetCurrentRadius() * 2;
+        /*var diameter = GameData.Instance.PlayerExplosionPerk.GetCurrentRadius() * 2;
         var radiusEffect = Instantiate(explodeRadiusEffect);
         radiusEffect.transform.position = pos;
         radiusEffect.transform.localScale *= diameter;
@@ -67,7 +67,7 @@ public class ExplosionPerkInGameHandler : MonoBehaviour
         yield return new WaitForSeconds(timeToChangeEffectColor);
         sphereRenderer.material.color = Color.white;
         yield return new WaitForSeconds(timeToChangeEffectColor);
-        Destroy(radiusEffect);
+        Destroy(radiusEffect);*/
 
         Instantiate(explosionParticles, pos, Quaternion.identity);
     }
