@@ -31,6 +31,7 @@ public class SpawnEnemiesData : ScriptableObject
     [field: SerializeField, FormerlySerializedAs("enemySpawns")] public List<EnemiesSpawn> EnemySpawns { get; private set; } = new();
 
     public EnemyPrefabs EnemyPrefabs;
+    public float speedModifier = 1;
 
     public Enemy GetRandomNormalZombie()
     {

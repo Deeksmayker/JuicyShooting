@@ -22,7 +22,7 @@ public class GameData : MonoBehaviour
     public int MoneyByKill { get; } = 20;
     public int MoneyByKillInWeakPoint { get; } = 20;
     
-    [field: SerializeField] public int Level { get; private set; } = 1;
+    [field: SerializeField] public int Level { get; private set; } = 0;
 
     [SerializeField] private WeaponWithStats[] weaponsWithStats;
 
@@ -44,6 +44,12 @@ public class GameData : MonoBehaviour
 
         CurrentWeapon = weaponsWithStats[_currentWeaponIndex].weaponPrefab;
         WeaponStats = weaponsWithStats[_currentWeaponIndex].weaponStats;
+
+        if (Level == 0)
+        {
+            PlayerExplosionPerk.FrequencyLevel = 8;
+            PlayerExplosionPerk.RadiusLevel = 6;
+        }
         
         Enemy.EnemyDied.AddListener(HandleKill);
         Enemy.EnemyDiedByWeakPoint.AddListener(HandleWeakPointKill);
@@ -51,11 +57,15 @@ public class GameData : MonoBehaviour
 
     public void HandleKill()
     {
+        if (Level == 0)
+            return;
         AddMoney(MoneyByKill);
     }
 
     public void HandleWeakPointKill()
     {
+        if (Level == 0)
+            return;
         AddMoney(MoneyByKillInWeakPoint);
     }
     
@@ -74,6 +84,13 @@ public class GameData : MonoBehaviour
     public void SetLevelToNext()
     {
         Level++;
+
+        if (Level == 1)
+        {
+            SetWeaponToNext();
+            PlayerExplosionPerk.FrequencyLevel = 0;
+            PlayerExplosionPerk.RadiusLevel = 0;
+        }
     }
 
     public void SaveGame()
@@ -98,7 +115,7 @@ public class GameData : MonoBehaviour
 
     public SpawnEnemiesData GetCurrentEnemySpawnData()
     {
-        return levelsEnemySpawnData[Level - 1];
+        return levelsEnemySpawnData[Level];
     }
 
     public void SetWeaponToNext()

@@ -98,10 +98,9 @@ public class UiManager : MonoBehaviour
 
     private void HandleWin()
     {
-        Debug.Log("FSDWIN");
         winText.gameObject.SetActive(true);
         loseText.gameObject.SetActive(false);
-        OpenAndPrepareGameEndPanel();
+        Invoke(nameof(OpenAndPrepareGameEndPanel), 1.5f);
     }
 
     private void HandleLose()
@@ -114,6 +113,11 @@ public class UiManager : MonoBehaviour
     private void OpenAndPrepareGameEndPanel()
     {
         gameEndPanel.SetActive(true);
+        if (GameData.Instance.Level == 0)
+        {
+            doubleMoneyButton.gameObject.SetActive(false);
+            return;
+        }
         doubleMoneyButton.gameObject.SetActive(true);
         UpdateMoneyTexts();
         StartCoroutine(SetCoinCounters());

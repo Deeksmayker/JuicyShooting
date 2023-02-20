@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
         _spawnManager = GetComponent<EnemySpawnManager>();
 
         _spawnManager.AllEnemiesDied.AddListener(HandleWin);
+        
+        HitPopup.PopupPool.Clear();
     }
 
     private void Update()
@@ -26,12 +28,16 @@ public class GameManager : MonoBehaviour
     public void HandleWin()
     {
         OnWin.Invoke();
+        GameData.Instance.SetLevelToNext();
     }
     
     [ContextMenu("Emulate Lose")]
     public void HandleLose()
     {
         OnLose.Invoke();
+        
+        if (GameData.Instance.Level == 0)
+            GameData.Instance.SetLevelToNext();
     }
 
     [ContextMenu("Emulate Kill")]

@@ -34,6 +34,7 @@ public class EnemyView : MonoBehaviour
         Instantiate(weakPoint ? hugeParticles : smallParticles, pos, Quaternion.identity);
     }
 
+
     private void ShowHitPopup(bool weakPoint, Vector3 pos)
     {
         if (HitPopup.PopupPool == null)

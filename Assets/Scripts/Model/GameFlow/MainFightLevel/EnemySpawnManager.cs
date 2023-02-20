@@ -99,6 +99,7 @@ public class EnemySpawnManager : MonoBehaviour
                 case SpawnEnemiesData.EnemyTypes.NormalZombie:
                     var zombie = _enemiesPool.Get();
                     zombie.transform.position = randomSpawnPosition;
+                    zombie.speed *= _enemiesSpawnData.speedModifier;
                     break;
             }
         }
@@ -112,7 +113,6 @@ public class EnemySpawnManager : MonoBehaviour
     public void OnEnemyDied()
     {
         _enemiesCount--;
-        Debug.Log(_enemiesCount);
 
         if (_enemiesCount == 0)
         {
