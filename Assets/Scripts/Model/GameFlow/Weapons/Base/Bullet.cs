@@ -1,5 +1,6 @@
 using Assets.Scripts.Model.Interfaces;
 using System.Linq;
+using NTC.Global.Pool;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -7,8 +8,8 @@ public class Bullet : MonoBehaviour
 {
     public float damage = 1;
 
-    private float _maxLifeTime = 10;
-    private float _lifeTime = 0;
+    /*private float _maxLifeTime = 3;
+    private float _lifeTime = 0;*/
 
     private Vector3 _lastFrameVelocity;
 
@@ -19,12 +20,12 @@ public class Bullet : MonoBehaviour
         Rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    /*private void Update()
     {
         _lifeTime += Time.deltaTime;
-        if (_lifeTime > _maxLifeTime)
-            Destroy(gameObject);
-    }
+        /*if (_lifeTime > _maxLifeTime)
+            NightPool.Despawn(this);#1#
+    }*/
 
     private void LateUpdate()
     {
@@ -43,6 +44,6 @@ public class Bullet : MonoBehaviour
             spreadedParticles.SpreadParticles(transform.position);
         }
 
-        Destroy(gameObject);
+        NightPool.Despawn(this);
     }
 }

@@ -26,6 +26,9 @@ public class CameraRotation : MonoBehaviour
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
+
+        if (Screen.width > Screen.height)
+            rotationSpeed *= 2;
     }
 
     private void Update()
@@ -52,6 +55,9 @@ public class CameraRotation : MonoBehaviour
 
         _xAngle = _xAngleTemp + (_currentTouchPosition.x - _firstTouchPosition.x) * rotationSpeed / Screen.width;
         _yAngle = _yAngleTemp + (_currentTouchPosition.y - _firstTouchPosition.y) * rotationSpeed / Screen.height;
+
+        _yAngle = Mathf.Clamp(_yAngle, -60, 60);
+        _xAngle = Mathf.Clamp(_xAngle, -80, 80);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-_yAngle, _xAngle, 0.0f), Time.deltaTime * 20);
     }

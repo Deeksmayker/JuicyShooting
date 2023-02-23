@@ -107,4 +107,10 @@ public class Enemy : MonoBehaviour
             Destroy(scripts[i]);
         }
     }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speed *= multiplier;
+        GetComponent<Animator>().SetFloat("Speed", multiplier);
+    }
 }

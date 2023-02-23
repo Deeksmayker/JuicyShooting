@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe38ea75b643fe4299833f23913fee4, type: 3}
+  m_Name: Level 12 enemies
+  m_EditorClassIdentifier: 
+  <EnemySpawns>k__BackingField:
+  - spawnLocation: 0
+    enemiesToSpawn: 00000000000000000000000000000000
+    spawnDelay: 1
+  - spawnLocation: 0
+    enemiesToSpawn: 00000000000000000000000000000000
+    spawnDelay: 3
+  - spawnLocation: 0
+    enemiesToSpawn: 00000000000000000000000000000000
+    spawnDelay: 3
+  - spawnLocation: 0
+    enemiesToSpawn: 00000000000000000000000000000000
+    spawnDelay: 3
+  - spawnLocation: 0
+    enemiesToSpawn: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    spawnDelay: 3
+  - spawnLocation: 0
+    enemiesToSpawn: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    spawnDelay: 5
+  - spawnLocation: 1
+    enemiesToSpawn: 00000000
+    spawnDelay: 1
+  - spawnLocation: 2
+    enemiesToSpawn: 00000000
+    spawnDelay: 1
+  EnemyPrefabs: {fileID: 11400000, guid: ea2601a32a1455b49a2c05ba02eb23e5, type: 2}
+  speedModifier: 1.2

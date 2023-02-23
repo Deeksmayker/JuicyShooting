@@ -1,4 +1,5 @@
 using System.Linq;
+using NTC.Global.Pool;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -105,7 +106,8 @@ public abstract class Weapon : MonoBehaviour
         var randomNumberY = Random.Range(-spread, spread);
         var randomNumberZ = Random.Range(-spread, spread);
 
-        var bullet = Instantiate(bulletPrefab, startPoint, transform.rotation);
+        var bullet = NightPool.Spawn(bulletPrefab, startPoint, transform.rotation);
+        //Debug.Log(bullet);
         bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
         bullet.Rb.velocity = bullet.transform.forward * bulletSpeed;
         bullet.damage = damage;

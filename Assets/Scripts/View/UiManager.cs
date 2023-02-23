@@ -22,6 +22,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Button doubleMoneyButton;
     [SerializeField] private Slider doubleMoneyTimerSlider;
 
+    private int _level;
     private int _startMoney;
     private int _additionalKillMoney;
     private int _additionalHeadshotMoney;
@@ -50,6 +51,8 @@ public class UiManager : MonoBehaviour
 
         GameManager.OnWin.AddListener(HandleWin);
         GameManager.OnLose.AddListener(HandleLose);
+
+        _level = GameData.Instance.Level;
     }
 
     public void ResetLevel()
@@ -113,12 +116,16 @@ public class UiManager : MonoBehaviour
     private void OpenAndPrepareGameEndPanel()
     {
         gameEndPanel.SetActive(true);
-        if (GameData.Instance.Level == 0)
+        if (_level == 0)
         {
             doubleMoneyButton.gameObject.SetActive(false);
-            return;
+            _additionalKillMoney = 0;
+            _additionalHeadshotMoney = 0;
         }
-        doubleMoneyButton.gameObject.SetActive(true);
+        else
+        {
+            doubleMoneyButton.gameObject.SetActive(true);
+        }
         UpdateMoneyTexts();
         StartCoroutine(SetCoinCounters());
     }

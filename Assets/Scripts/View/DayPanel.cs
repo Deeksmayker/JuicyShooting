@@ -7,18 +7,18 @@ public class DayPanel : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dayValue;
     
-    private Animation _animation;
+    //private Animation _animation;
     
     void Start()
     {
-        _animation = GetComponent<Animation>();
+        //_animation = GetComponent<Animation>();
         dayValue.text = GameData.Instance.Level == 0 ? "??" : GameData.Instance.Level.ToString();
         
-        Invoke(nameof(PlayAnimation), 1);
+        //Invoke(nameof(PlayAnimation), 1);
     }
 
     private void PlayAnimation()
     {
-        _animation.Play();
+        //_animation.Play();
     }
 }

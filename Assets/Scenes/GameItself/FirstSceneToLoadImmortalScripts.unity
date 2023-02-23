@@ -244,7 +244,7 @@ MonoBehaviour:
   <Level>k__BackingField: 0
   weaponsWithStats:
   - weaponName: Mac3
-    positionRelatedToPlayer: {x: 0.5, y: -0.43, z: 3}
+    positionRelatedToPlayer: {x: 0.5, y: -1, z: 3}
     weaponPrefab: {fileID: 3038041139623228919, guid: 5c054c1137947464dbf2d1e8a37eab5c, type: 3}
     weaponStats:
       <CostToBuy>k__BackingField: 0
@@ -261,10 +261,10 @@ MonoBehaviour:
       <CostToBuy>k__BackingField: 0
       <ReduceReloadTimePerLevel>k__BackingField: 0.1
       <ReduceSpreadPerLevel>k__BackingField: 0.1
-      <BaseReloadUpgradeCost>k__BackingField: 100
-      <BaseSpreadUpgradeCost>k__BackingField: 100
-      <PerLevelReloadCostMultiplier>k__BackingField: 1.3
-      <PerLevelSpreadCostMultiplier>k__BackingField: 1.3
+      <BaseReloadUpgradeCost>k__BackingField: 50
+      <BaseSpreadUpgradeCost>k__BackingField: 50
+      <PerLevelReloadCostMultiplier>k__BackingField: 1.2
+      <PerLevelSpreadCostMultiplier>k__BackingField: 1.2
   - weaponName: Shotgun One
     positionRelatedToPlayer: {x: 0.41, y: -0.43, z: 2.106}
     weaponPrefab: {fileID: 8506072348624615284, guid: 767994dec14719e48ac22469cee87ec4, type: 3}
@@ -272,15 +272,15 @@ MonoBehaviour:
       <CostToBuy>k__BackingField: 1000
       <ReduceReloadTimePerLevel>k__BackingField: 0.07
       <ReduceSpreadPerLevel>k__BackingField: 0.2
-      <BaseReloadUpgradeCost>k__BackingField: 200
-      <BaseSpreadUpgradeCost>k__BackingField: 200
+      <BaseReloadUpgradeCost>k__BackingField: 100
+      <BaseSpreadUpgradeCost>k__BackingField: 100
       <PerLevelReloadCostMultiplier>k__BackingField: 1.3
       <PerLevelSpreadCostMultiplier>k__BackingField: 1.3
   - weaponName: Mac One
     positionRelatedToPlayer: {x: 0.39, y: -0.43, z: 2.585}
     weaponPrefab: {fileID: 3038041139623228919, guid: a39da319e641e0244bf3f474ecf8f933, type: 3}
     weaponStats:
-      <CostToBuy>k__BackingField: 7000
+      <CostToBuy>k__BackingField: 5000
       <ReduceReloadTimePerLevel>k__BackingField: 0.12
       <ReduceSpreadPerLevel>k__BackingField: 0.1
       <BaseReloadUpgradeCost>k__BackingField: 200
@@ -321,7 +321,7 @@ MonoBehaviour:
       <PerLevelReloadCostMultiplier>k__BackingField: 1.3
       <PerLevelSpreadCostMultiplier>k__BackingField: 1.3
   - weaponName: Mac3
-    positionRelatedToPlayer: {x: 0.5, y: -0.43, z: 3}
+    positionRelatedToPlayer: {x: 0.5, y: -1, z: 3}
     weaponPrefab: {fileID: 3038041139623228919, guid: 5c054c1137947464dbf2d1e8a37eab5c, type: 3}
     weaponStats:
       <CostToBuy>k__BackingField: 1000
@@ -355,14 +355,20 @@ MonoBehaviour:
   levelsEnemySpawnData:
   - {fileID: 11400000, guid: 1cfef2a83a546db41974ad231d332a22, type: 2}
   - {fileID: 11400000, guid: 386c61df4b5d1f7418c2950f42073b3d, type: 2}
+  - {fileID: 11400000, guid: 66388845814350049a9d1f011eb347ae, type: 2}
+  - {fileID: 11400000, guid: 04860d3ee9594cb4eb23c33b01fcc99b, type: 2}
+  - {fileID: 11400000, guid: 814f597608f776f4c960fd5c207a509e, type: 2}
+  - {fileID: 11400000, guid: 84918d85ddbcba348aae6c523a237b80, type: 2}
+  - {fileID: 11400000, guid: 824bad3a431319f4291f52de1d069ac5, type: 2}
+  - {fileID: 11400000, guid: 35df524134bfa724a85cadf253e478ce, type: 2}
+  - {fileID: 11400000, guid: 63a2176186a05614394f887c26634a77, type: 2}
+  - {fileID: 11400000, guid: 57c73edd72f368b499a26cc11d0b585f, type: 2}
   - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
-  - {fileID: 11400000, guid: ec48efbc2f9ad4f4e9adcad550b8bcf1, type: 2}
+  - {fileID: 11400000, guid: 322bf5babb601134c8f9f32ada634e01, type: 2}
+  - {fileID: 11400000, guid: a7442a994f8d04e4e9ac09f077bf68ea, type: 2}
+  - {fileID: 11400000, guid: 1c0f2c720327bf4458448d522ac0e624, type: 2}
+  - {fileID: 11400000, guid: 7d238e078b1bdfd4b88ac65603367fd8, type: 2}
+  - {fileID: 11400000, guid: 7bcaf780002c0674f8a8aa2348f2e0da, type: 2}
   moneyValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -434,6 +440,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1181192838181847850, guid: 997002e704539624fa7ddbc739274c8f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989688145116099468, guid: 997002e704539624fa7ddbc739274c8f, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

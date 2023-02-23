@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe38ea75b643fe4299833f23913fee4, type: 3}
   m_Name: Level 3 enemies
   m_EditorClassIdentifier: 
-  <EnemySpawns>k__BackingField: []
-  EnemyPrefabs: {fileID: 0}
+  <EnemySpawns>k__BackingField:
+  - spawnLocation: 0
+    enemiesToSpawn: 000000000000000000000000
+    spawnDelay: 3
+  - spawnLocation: 0
+    enemiesToSpawn: 00000000000000000000000000000000
+    spawnDelay: 5
+  - spawnLocation: 1
+    enemiesToSpawn: 0000000000000000
+    spawnDelay: 5
+  EnemyPrefabs: {fileID: 11400000, guid: ea2601a32a1455b49a2c05ba02eb23e5, type: 2}
+  speedModifier: 1

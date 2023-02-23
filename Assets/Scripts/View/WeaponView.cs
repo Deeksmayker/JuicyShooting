@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Linq;
+using NTC.Global.Pool;
 using UnityEngine;
 
 public class WeaponView : MonoBehaviour
 {
     [SerializeField] protected Transform barrelArmature;
+    [SerializeField] private AudioSource shootAudio;
 
     [Header("Sway settings")]
     [SerializeField] private float swaySmooth;
@@ -53,6 +55,9 @@ public class WeaponView : MonoBehaviour
         _targetRotation = transform.localRotation;
 
         _startLocalPosition = transform.localPosition;
+        
+        GameManager.OnWin.AddListener(() => Invoke(nameof(DisableGun), 1));
+        GameManager.OnLose.AddListener(DisableGun);
     }
 
     private void Update()
@@ -114,6 +119,12 @@ public class WeaponView : MonoBehaviour
 
     private void OnFired()
     {
+        if (shootAudio != null)
+        {
+            var a = NightPool.Spawn(shootAudio, transform.position, Quaternion.identity);
+            a.Play();
+            //NightPool.Despawn(a, 0.2f);
+        }
         StartCoroutine(MakeRecoil());
 
         SetAnimationWithLength("Fire", "FireTime", _weapon.betweenShootDelay);
@@ -174,5 +185,10 @@ public class WeaponView : MonoBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
+    }
+
+    private void DisableGun()
+    {
+        gameObject.SetActive(false);
     }
 }
