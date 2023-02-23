@@ -68,6 +68,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1b4b8144e2a4054199287da62cdd0da, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a1b4b8144e2a4054199287da62cdd0da, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a1b4b8144e2a4054199287da62cdd0da, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a1b4b8144e2a4054199287da62cdd0da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1054,8 +1066,6 @@ MonoBehaviour:
   speed: 0.5
   health: 3
   weakPointsCount: 1
-  moneyByKill: 10
-  moneyByKillInWeakPoint: 20
   hited:
     m_PersistentCalls:
       m_Calls: []
@@ -1076,6 +1086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallParticles: {fileID: 8167067520147848454, guid: d3ebaec6953a2cc42b66d4ac0f510917, type: 3}
   hugeParticles: {fileID: 2229625050855817978, guid: d07833bbc9aeb254f942e15af155c3ff, type: 3}
+  normalHitSound: {fileID: 4991064096888609664, guid: 18763546e5a94434a81ca681bf598b7f, type: 3}
+  heavyHitSound: {fileID: 4991064096888609664, guid: 64d99e6f49a5c6242a312e6598ff144a, type: 3}
   hitPopup: {fileID: 5833382252742736319, guid: 8ea7e1fe5d18a534991f84c4184af7be, type: 3}
   colorOnWeakPoint: {r: 1, g: 0.2216981, b: 0.2216981, a: 0}
   colorOnNormalPoint: {r: 1, g: 0.7997738, b: 0.23113209, a: 0}

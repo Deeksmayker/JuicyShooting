@@ -1,10 +1,12 @@
 using System;
+using NTC.Global.Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemyView : MonoBehaviour
 {
     [SerializeField] private ParticleSystem smallParticles, hugeParticles;
+    [SerializeField] private AudioSource normalHitSound, heavyHitSound;
     
     [Header("Popup")]
     [SerializeField] private HitPopup hitPopup;
@@ -27,11 +29,14 @@ public class EnemyView : MonoBehaviour
     {
         SpreadParticles(weakPoint, pos);
         ShowHitPopup(weakPoint, pos);
+
+        var a = NightPool.Spawn(weakPoint ? heavyHitSound : normalHitSound, pos, Quaternion.identity);
+        a.Play();
     }
 
     private void SpreadParticles(bool weakPoint, Vector3 pos)
     {
-        Instantiate(weakPoint ? hugeParticles : smallParticles, pos, Quaternion.identity);
+        NightPool.Spawn(weakPoint ? hugeParticles : smallParticles, pos, Quaternion.identity);
     }
 
 

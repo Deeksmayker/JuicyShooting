@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameItself/UpgradingScene.unity
     guid: f528da053d099444d86012665ebc6f42
   - enabled: 1
-    path: Assets/Scenes/GameItself/MainFightScene.unity
+    path: Assets/Scenes/GameItself/Lucnho moya.unity
+    guid: 2dec7310d37345f48b27e689b0fe5169
+  - enabled: 0
+    path: Assets/Scenes/MainFightScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

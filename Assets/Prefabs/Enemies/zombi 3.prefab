@@ -3227,7 +3227,7 @@ Transform:
   m_GameObject: {fileID: 3911455326271615462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.773, y: 0, z: 208.96606}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4734200318389205954}
@@ -3328,8 +3328,6 @@ MonoBehaviour:
   speed: 0.5
   health: 3
   weakPointsCount: 1
-  moneyByKill: 10
-  moneyByKillInWeakPoint: 20
   hited:
     m_PersistentCalls:
       m_Calls: []
@@ -3350,6 +3348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallParticles: {fileID: 8167067520147848454, guid: d3ebaec6953a2cc42b66d4ac0f510917, type: 3}
   hugeParticles: {fileID: 2229625050855817978, guid: d07833bbc9aeb254f942e15af155c3ff, type: 3}
+  normalHitSound: {fileID: 4991064096888609664, guid: 18763546e5a94434a81ca681bf598b7f, type: 3}
+  heavyHitSound: {fileID: 4991064096888609664, guid: 64d99e6f49a5c6242a312e6598ff144a, type: 3}
   hitPopup: {fileID: 5833382252742736319, guid: 8ea7e1fe5d18a534991f84c4184af7be, type: 3}
   colorOnWeakPoint: {r: 1, g: 0.2216981, b: 0.2216981, a: 0}
   colorOnNormalPoint: {r: 1, g: 0.7997738, b: 0.23113209, a: 0}

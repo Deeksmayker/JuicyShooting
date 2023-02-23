@@ -1,10 +1,12 @@
 using System;
+using NTC.Global.Pool;
 using UnityEngine;
 
 [RequireComponent(typeof(Light))]
 public class SpotLightEnemyDetector : MonoBehaviour
 {
     [SerializeField] private LayerMask layersToDetect;
+    [SerializeField] private AudioSource onSound, offSound;
 
     private Light _light;
     private int _enemiesInRange;
@@ -19,7 +21,12 @@ public class SpotLightEnemyDetector : MonoBehaviour
     private void LateUpdate()
     {
         if (_enemiesInRange > 0 && !_light.enabled)
+        {
+            var a = NightPool.Spawn(onSound, transform.position, Quaternion.identity);
+            a.Play();
+            
             _light.enabled = true;
+        }
         if (_enemiesInRange <= 0 && _light.enabled)
         {
             Invoke(nameof(DisableLight), 0.5f);
@@ -41,7 +48,9 @@ public class SpotLightEnemyDetector : MonoBehaviour
     {
         if (_enemiesInRange > 0)
             return;
-        
+
+        var a = NightPool.Spawn(offSound, transform.position, Quaternion.identity);
+        a.Play();
         _light.enabled = false;
     }
 

@@ -58,6 +58,11 @@ public class WeaponView : MonoBehaviour
         
         GameManager.OnWin.AddListener(() => Invoke(nameof(DisableGun), 1));
         GameManager.OnLose.AddListener(DisableGun);
+
+        if (Screen.width > Screen.height)
+        {
+            swayMultiplier /= 5;
+        }
     }
 
     private void Update()
