@@ -37428,6 +37428,7 @@ MonoBehaviour:
   explosionPushPower: 2000
   timeToChangeEffectColor: 0.05
   explosionParticles: {fileID: 1181192838181847851, guid: 997002e704539624fa7ddbc739274c8f, type: 3}
+  explosionSound: {fileID: 4991064096888609664, guid: 85ad5270c7ddaef4daa5edf00bee074e, type: 3}
 --- !u!114 &1247916038 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 712461080685371194, guid: 3f8e53545f5f7964dbfdb07973e5d002, type: 3}

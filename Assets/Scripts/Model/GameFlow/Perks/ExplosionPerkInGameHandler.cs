@@ -1,4 +1,5 @@
 using System.Collections;
+using NTC.Global.Pool;
 using UnityEngine;
 
 public class ExplosionPerkInGameHandler : MonoBehaviour
@@ -8,6 +9,7 @@ public class ExplosionPerkInGameHandler : MonoBehaviour
     [SerializeField] private float timeToChangeEffectColor;
     //[SerializeField] private GameObject explodeRadiusEffect;
     [SerializeField] private ParticleSystem explosionParticles;
+    [SerializeField] private AudioSource explosionSound;
 
     private int _hitsBeforeExplosion;
 
@@ -70,5 +72,7 @@ public class ExplosionPerkInGameHandler : MonoBehaviour
         Destroy(radiusEffect);*/
 
         Instantiate(explosionParticles, pos, Quaternion.identity);
+        var eSound = NightPool.Spawn(explosionSound, pos, Quaternion.identity);
+        eSound.Play();
     }
 }

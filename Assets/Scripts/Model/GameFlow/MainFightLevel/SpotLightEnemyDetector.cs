@@ -49,8 +49,8 @@ public class SpotLightEnemyDetector : MonoBehaviour
         if (_enemiesInRange > 0)
             return;
 
-        var a = NightPool.Spawn(offSound, transform.position, Quaternion.identity);
-        a.Play();
+        /*var a = NightPool.Spawn(offSound, transform.position, Quaternion.identity);
+        a.Play();*/
         _light.enabled = false;
     }
 

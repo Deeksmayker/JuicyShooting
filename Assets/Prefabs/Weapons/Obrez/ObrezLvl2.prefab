@@ -244,6 +244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrelArmature: {fileID: 246215711512426210}
+  shootAudio: {fileID: 0}
+  muzzleFlash: {fileID: 198792769130808804, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
   swaySmooth: 3
   swayMultiplier: 3
   recoilPower: 60

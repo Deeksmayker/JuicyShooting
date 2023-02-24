@@ -7,6 +7,7 @@ public class WeaponView : MonoBehaviour
 {
     [SerializeField] protected Transform barrelArmature;
     [SerializeField] private AudioSource shootAudio;
+    [SerializeField] private ParticleSystem muzzleFlash;
 
     [Header("Sway settings")]
     [SerializeField] private float swaySmooth;
@@ -133,6 +134,14 @@ public class WeaponView : MonoBehaviour
         StartCoroutine(MakeRecoil());
 
         SetAnimationWithLength("Fire", "FireTime", _weapon.betweenShootDelay);
+
+        for (var i = 0; i < shootPointsPositions.Length; i++)
+        {
+            var muzzle = NightPool.Spawn(muzzleFlash, shootPointsPositions[i],
+                shootPointsPositions[i].rotation);
+            muzzle.transform.Rotate(Vector3.up, -90f);
+            muzzle.Play();
+        }
     }
 
     private Quaternion _targetRotation;
