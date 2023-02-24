@@ -23,6 +23,7 @@ public class GameData : MonoBehaviour
     public int MoneyByKillInWeakPoint { get; } = 20;
     
     [field: SerializeField] public int Level { get; private set; } = 0;
+    public float CurrentSpeedModifier = 1;
 
     [SerializeField] private WeaponWithStats[] weaponsWithStats;
 
@@ -53,6 +54,8 @@ public class GameData : MonoBehaviour
         
         Enemy.EnemyDied.AddListener(HandleKill);
         Enemy.EnemyDiedByWeakPoint.AddListener(HandleWeakPointKill);
+
+        CurrentSpeedModifier = levelsEnemySpawnData[Level].speedModifier;
     }
 
     public void HandleKill()
@@ -85,6 +88,10 @@ public class GameData : MonoBehaviour
     {
         Level++;
 
+        CurrentSpeedModifier = Level < levelsEnemySpawnData.Count
+            ? levelsEnemySpawnData[Level].speedModifier
+            : (Level - levelsEnemySpawnData.Count) * 0.05f +
+              levelsEnemySpawnData[levelsEnemySpawnData.Count - 1].speedModifier;
         if (Level == 1)
         {
             SetWeaponToNext();
@@ -103,6 +110,19 @@ public class GameData : MonoBehaviour
         
     }
 
+    public void ResetSave()
+    {
+        Level = 0;
+        
+        _currentWeaponIndex = -1;
+        SetWeaponToNext();
+
+        PlayerDualPerk.ResetPerk();
+        PlayerExplosionPerk.ResetPerk();
+        
+        SaveGame();
+    }
+
     public void ShowAdForReward()
     {
         
@@ -115,7 +135,7 @@ public class GameData : MonoBehaviour
 
     public SpawnEnemiesData GetCurrentEnemySpawnData()
     {
-        return levelsEnemySpawnData[Level];
+        return Level < levelsEnemySpawnData.Count ? levelsEnemySpawnData[Level] : levelsEnemySpawnData[levelsEnemySpawnData.Count - 1];
     }
 
     public void SetWeaponToNext()

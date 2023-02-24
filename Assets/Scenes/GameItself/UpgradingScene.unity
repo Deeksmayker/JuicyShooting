@@ -515,6 +515,7 @@ GameObject:
   - component: {fileID: 91283187}
   - component: {fileID: 91283189}
   - component: {fileID: 91283188}
+  - component: {fileID: 91283190}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -641,6 +642,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91283186}
   m_CullTransparentMesh: 1
+--- !u!114 &91283190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91283186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u041A\u0443\u043F\u0438\u0442\u044C \u043F\u0443\u0448\u043A\u0443"
+  englishText: Buy Weapon
 --- !u!1 &107320810
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +814,7 @@ GameObject:
   - component: {fileID: 143758907}
   - component: {fileID: 143758909}
   - component: {fileID: 143758908}
+  - component: {fileID: 143758910}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -923,6 +939,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143758906}
   m_CullTransparentMesh: 1
+--- !u!114 &143758910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143758906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F"
+  englishText: Increase Uses Count
 --- !u!1 &188803279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,6 +1577,7 @@ GameObject:
   - component: {fileID: 272323524}
   - component: {fileID: 272323526}
   - component: {fileID: 272323525}
+  - component: {fileID: 272323527}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1671,6 +1702,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272323523}
   m_CullTransparentMesh: 1
+--- !u!114 &272323527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272323523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0427\u0430\u0441\u0442\u043E\u0442\u0430"
+  englishText: Upgrade Frequency
 --- !u!1 &412487439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,6 +2290,7 @@ GameObject:
   - component: {fileID: 510167167}
   - component: {fileID: 510167169}
   - component: {fileID: 510167168}
+  - component: {fileID: 510167170}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -2369,6 +2415,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510167166}
   m_CullTransparentMesh: 1
+--- !u!114 &510167170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510167166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0420\u0430\u0437\u0431\u0440\u043E\u0441"
+  englishText: Reduce Spread
 --- !u!1 &525453556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,6 +2955,7 @@ GameObject:
   - component: {fileID: 774209165}
   - component: {fileID: 774209167}
   - component: {fileID: 774209166}
+  - component: {fileID: 774209168}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -3019,6 +3080,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774209164}
   m_CullTransparentMesh: 1
+--- !u!114 &774209168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774209164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u041F\u0443\u043B\u0435\u043C\u0435\u0442\u043D\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C"
+  englishText: Machine Gun Turret
 --- !u!1 &815819272
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,6 +3105,7 @@ GameObject:
   - component: {fileID: 815819273}
   - component: {fileID: 815819275}
   - component: {fileID: 815819274}
+  - component: {fileID: 815819276}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3154,6 +3230,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815819272}
   m_CullTransparentMesh: 1
+--- !u!114 &815819276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815819272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0420\u0430\u0434\u0438\u0443\u0441"
+  englishText: Upgrade Radius
 --- !u!1 &843817436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,6 +3391,7 @@ GameObject:
   - component: {fileID: 890306012}
   - component: {fileID: 890306014}
   - component: {fileID: 890306013}
+  - component: {fileID: 890306015}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -3425,6 +3516,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890306011}
   m_CullTransparentMesh: 1
+--- !u!114 &890306015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890306011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0412\u0440\u0435\u043C\u044F \u043F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0438"
+  englishText: Reload Time
 --- !u!1 &906157605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,6 +3541,7 @@ GameObject:
   - component: {fileID: 906157606}
   - component: {fileID: 906157608}
   - component: {fileID: 906157607}
+  - component: {fileID: 906157609}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3560,6 +3666,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906157605}
   m_CullTransparentMesh: 1
+--- !u!114 &906157609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906157605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0412 \u0431\u043E\u0439"
+  englishText: To Fight
 --- !u!1 &1037355312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,6 +3771,7 @@ GameObject:
   - component: {fileID: 1077199095}
   - component: {fileID: 1077199097}
   - component: {fileID: 1077199096}
+  - component: {fileID: 1077199098}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3775,6 +3896,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077199094}
   m_CullTransparentMesh: 1
+--- !u!114 &1077199098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077199094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0414\u043B\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C "
+  englishText: Upgrade Duration
 --- !u!1 &1150332556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3999,6 +4134,7 @@ GameObject:
   - component: {fileID: 1176946188}
   - component: {fileID: 1176946190}
   - component: {fileID: 1176946189}
+  - component: {fileID: 1176946191}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -4123,6 +4259,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176946187}
   m_CullTransparentMesh: 1
+--- !u!114 &1176946191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176946187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0412\u0437\u0440\u044B\u0432\u043D\u044B\u0435 \u0432\u044B\u0441\u0442\u0440\u0435\u043B\u044B"
+  englishText: Explosive Shots Perk
 --- !u!1 &1221135510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,6 +4284,7 @@ GameObject:
   - component: {fileID: 1221135511}
   - component: {fileID: 1221135513}
   - component: {fileID: 1221135512}
+  - component: {fileID: 1221135514}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -4260,6 +4411,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221135510}
   m_CullTransparentMesh: 1
+--- !u!114 &1221135514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221135510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0420\u0430\u043A\u0435\u0442\u043D\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C"
+  englishText: Rocket Turret
 --- !u!1 &1267548792
 GameObject:
   m_ObjectHideFlags: 0
@@ -4386,6 +4551,7 @@ GameObject:
   - component: {fileID: 1309736336}
   - component: {fileID: 1309736338}
   - component: {fileID: 1309736337}
+  - component: {fileID: 1309736339}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -4510,6 +4676,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309736335}
   m_CullTransparentMesh: 1
+--- !u!114 &1309736339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309736335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0423\u0434\u0432\u043E\u0435\u043D\u0438\u0435 \u043E\u0440\u0443\u0436\u0438\u044F"
+  englishText: Dual Weapon Perk
+--- !u!1001 &1361490584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2105844877}
+    m_Modifications:
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991064096888609671, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+      propertyPath: m_Name
+      value: AmbientMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+--- !u!4 &1361490585 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4991064096888609665, guid: 5048b000b6cf49949a11b6a9e2110c85, type: 3}
+  m_PrefabInstance: {fileID: 1361490584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1363355724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4951,6 +5193,7 @@ GameObject:
   - component: {fileID: 1657912997}
   - component: {fileID: 1657912999}
   - component: {fileID: 1657912998}
+  - component: {fileID: 1657913000}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5075,6 +5318,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657912996}
   m_CullTransparentMesh: 1
+--- !u!114 &1657913000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657912996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0421\u043A\u043E\u0440\u043E \u0432\u044B\u0439\u0434\u0435\u0442"
+  englishText: Coming soon
 --- !u!1 &1668404426
 GameObject:
   m_ObjectHideFlags: 0
@@ -5493,6 +5750,7 @@ GameObject:
   - component: {fileID: 1767934098}
   - component: {fileID: 1767934100}
   - component: {fileID: 1767934099}
+  - component: {fileID: 1767934101}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5619,6 +5877,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767934097}
   m_CullTransparentMesh: 1
+--- !u!114 &1767934101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767934097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u041A\u0443\u043F\u0438\u0442\u044C \u043F\u0435\u0440\u043A"
+  englishText: Buy Perk
 --- !u!1 &1804184979
 GameObject:
   m_ObjectHideFlags: 0
@@ -5630,6 +5902,7 @@ GameObject:
   - component: {fileID: 1804184980}
   - component: {fileID: 1804184982}
   - component: {fileID: 1804184981}
+  - component: {fileID: 1804184983}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5756,6 +6029,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804184979}
   m_CullTransparentMesh: 1
+--- !u!114 &1804184983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804184979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u041A\u0443\u043F\u0438\u0442\u044C \u043F\u0435\u0440\u043A"
+  englishText: Buy Perk
 --- !u!1 &1886358269
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,6 +6367,7 @@ GameObject:
   - component: {fileID: 1919473091}
   - component: {fileID: 1919473093}
   - component: {fileID: 1919473092}
+  - component: {fileID: 1919473094}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -6206,6 +6494,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919473090}
   m_CullTransparentMesh: 1
+--- !u!114 &1919473094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919473090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0412\u0440\u0435\u043C\u044F \u043F\u0440\u043E\u043A\u0430\u0447\u0430\u0442\u044C\u0441\u044F"
+  englishText: Time to upgrade
 --- !u!1 &1966809021
 GameObject:
   m_ObjectHideFlags: 0
@@ -6217,6 +6519,7 @@ GameObject:
   - component: {fileID: 1966809022}
   - component: {fileID: 1966809024}
   - component: {fileID: 1966809023}
+  - component: {fileID: 1966809025}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6341,6 +6644,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966809021}
   m_CullTransparentMesh: 1
+--- !u!114 &1966809025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966809021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bfe22ed911034988fee9a9d58bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  russianText: "\u0421\u043A\u043E\u0440\u043E \u0432\u044B\u0439\u0434\u0435\u0442"
+  englishText: Coming soon
 --- !u!1 &1968459692
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,7 +7013,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1361490585}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6855,6 +7173,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &2132101733
 GameObject:
   m_ObjectHideFlags: 0

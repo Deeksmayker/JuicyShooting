@@ -38,6 +38,12 @@ public class DualPerk : PlayerPerk
             Debug.LogWarning("Uses count in Dual Perk is upgraded more than maximum");
     }
 
+    public void ResetPerk()
+    {
+        DurationLevel = 0;
+        UsesCount = 0;
+    }
+
     public int GetDurationUpgradeCost() => (int)(BaseDurationUpgradeCost * Mathf.Pow(PerLevelDurationCostMultiplier, DurationLevel - 1));
     public float GetCurrentDuration() => DurationLevel * PerLevelDurationIncrease + DefaultDuration;
     

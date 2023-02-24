@@ -357,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Money>k__BackingField: 0
   <Level>k__BackingField: 0
+  CurrentSpeedModifier: 1
   weaponsWithStats:
   - weaponName: Mac3
     positionRelatedToPlayer: {x: 0.5, y: -1, z: 3}
@@ -484,6 +485,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c0f2c720327bf4458448d522ac0e624, type: 2}
   - {fileID: 11400000, guid: 7d238e078b1bdfd4b88ac65603367fd8, type: 2}
   - {fileID: 11400000, guid: 7bcaf780002c0674f8a8aa2348f2e0da, type: 2}
+  - {fileID: 11400000, guid: c52e4dd4e1108574cb6edda0beef4230, type: 2}
+  - {fileID: 11400000, guid: fbe187558073a9341af8c48c8fb11e58, type: 2}
+  - {fileID: 11400000, guid: a677524d7c54d0148bf740df800655c0, type: 2}
+  - {fileID: 11400000, guid: 8a7292ea63ff7644684cc7631c893cd7, type: 2}
+  - {fileID: 11400000, guid: 380682231ffbd46448877275ed2d5b26, type: 2}
+  - {fileID: 11400000, guid: 85d66050bf989eb47822738759ce7a09, type: 2}
+  - {fileID: 11400000, guid: 095ce1058c09a4b42bc6375cdd51f0cd, type: 2}
+  - {fileID: 11400000, guid: 294323a0517125f47a28d28ffed8a6d4, type: 2}
+  - {fileID: 11400000, guid: bcdeb66392e89394e9972de228384949, type: 2}
+  - {fileID: 11400000, guid: 69292f2f7ca19bb4a9f694bb006e4651, type: 2}
   moneyValueChanged:
     m_PersistentCalls:
       m_Calls: []

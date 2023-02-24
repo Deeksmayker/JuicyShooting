@@ -1,4 +1,5 @@
 using System.Collections;
+using NTC.Global.Pool;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject dualPerkActivationPanel;
     [SerializeField] private Button dualActivationButton;
     [SerializeField] private TextMeshProUGUI dualUsesCount;
+
+    [SerializeField] private AudioSource winSound, loseSound;
+    [SerializeField] private GameObject tutorialPanel;
 
     [Header("Game End Panel")]
     [SerializeField] private GameObject gameEndPanel;
@@ -53,6 +57,11 @@ public class UiManager : MonoBehaviour
         GameManager.OnLose.AddListener(HandleLose);
 
         _level = GameData.Instance.Level;
+
+        if (_level == 0)
+        {
+            tutorialPanel.SetActive(true);
+        }
     }
 
     public void ResetLevel()
@@ -103,6 +112,10 @@ public class UiManager : MonoBehaviour
     {
         winText.gameObject.SetActive(true);
         loseText.gameObject.SetActive(false);
+
+        var sound = NightPool.Spawn(winSound, transform.position, Quaternion.identity);
+        sound.Play();
+        
         Invoke(nameof(OpenAndPrepareGameEndPanel), 1.5f);
     }
 
@@ -110,6 +123,10 @@ public class UiManager : MonoBehaviour
     {
         winText.gameObject.SetActive(false);
         loseText.gameObject.SetActive(true);
+        
+        var sound = NightPool.Spawn(loseSound, transform.position, Quaternion.identity);
+        sound.Play();
+        
         OpenAndPrepareGameEndPanel();
     }
 
@@ -173,5 +190,34 @@ public class UiManager : MonoBehaviour
             UpdateMoneyTexts();
             yield return new WaitForSeconds(0.05f);
         }
+    }
+    
+    [SerializeField] private Slider soundSlider;
+
+    public void ManageSound()
+    {
+        AudioListener.volume = soundSlider.value;
+    }
+
+    [SerializeField] private GameObject pausePanel;
+
+    public void OnPauseButton()
+    {
+        if (pausePanel.activeSelf)
+        {
+            pausePanel.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        else
+        {
+            pausePanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(1);
     }
 }

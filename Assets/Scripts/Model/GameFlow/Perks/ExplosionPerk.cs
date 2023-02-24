@@ -35,6 +35,12 @@ public class ExplosionPerk : PlayerPerk
         RadiusLevel++;
     }
 
+    public void ResetPerk()
+    {
+        RadiusLevel = 0;
+        FrequencyLevel = 0;
+    }
+
     public int GetFrequencyUpgradeCost() => (int)(FrequencyBaseCost * Mathf.Pow(PerLevelFrequencyCostMultiplier, FrequencyLevel - 1));
     public int GetCurrentFrequency() => DefaultFrequency - FrequencyLevel + 1;
 

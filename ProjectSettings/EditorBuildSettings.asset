@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameItself/FirstSceneToLoadImmortalScripts.unity
     guid: e95a9afa8551fcb49b060bc41b9551b1
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/GameItself/MainMenu.unity
     guid: b1d724fda8aaeb14fabe461df2b2997c
   - enabled: 1
     path: Assets/Scenes/GameItself/UpgradingScene.unity

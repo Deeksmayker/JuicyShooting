@@ -34,7 +34,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature|Fire
+  m_Name: Armature|Reload
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -50,7 +50,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -5179785421388635773, guid: 8cd709bd53e95c74baeaeba91dec6ddd, type: 3}
   m_Tag: 
-  m_SpeedParameter: FireTime
+  m_SpeedParameter: ReloadTime
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

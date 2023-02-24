@@ -99,7 +99,7 @@ public class EnemySpawnManager : MonoBehaviour
                 case SpawnEnemiesData.EnemyTypes.NormalZombie:
                     var zombie = _enemiesPool.Get();
                     zombie.transform.position = randomSpawnPosition;
-                    zombie.SetSpeedMultiplier(_enemiesSpawnData.speedModifier);
+                    zombie.SetSpeedMultiplier(GameData.Instance.CurrentSpeedModifier);
                     break;
             }
         }
