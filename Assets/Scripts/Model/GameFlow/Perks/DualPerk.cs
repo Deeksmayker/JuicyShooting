@@ -1,18 +1,18 @@
 using System;
 using UnityEngine;
 
-[Serializable]
+[Serializable] 
 public class DualPerk : PlayerPerk
 {
     [field: Header("Duration")]
-    [field: SerializeField] public int DurationLevel { get; private set; }
+    [field: SerializeField] public int DurationLevel { get; set; }
     [field: SerializeField] public float BaseDurationUpgradeCost { get; private set; }
     [field: SerializeField] public float PerLevelDurationCostMultiplier { get; private set; }
     [field: SerializeField] public float DefaultDuration { get; private set; }
     [field: SerializeField] public float PerLevelDurationIncrease { get; private set; }
 
     [field: Header("Uses Count")]
-    [field: SerializeField] public int UsesCount { get; private set; }
+    [field: SerializeField] public int UsesCount { get; set; }
     [field: SerializeField] public float BaseUsesCountUpgradeCost { get; private set; }
     [field: SerializeField] public float PerLevelUsesCountCostMultiplier { get; private set; }
 

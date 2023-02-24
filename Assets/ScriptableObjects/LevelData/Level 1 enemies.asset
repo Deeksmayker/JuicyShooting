@@ -21,5 +21,6 @@ MonoBehaviour:
     spawnDelay: 5
   - spawnLocation: 0
     enemiesToSpawn: 000000000000000000000000
-    spawnDelay: 10
+    spawnDelay: 5
   EnemyPrefabs: {fileID: 11400000, guid: ea2601a32a1455b49a2c05ba02eb23e5, type: 2}
+  speedModifier: 1

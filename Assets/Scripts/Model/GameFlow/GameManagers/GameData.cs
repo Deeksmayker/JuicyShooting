@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using YG;
 
 public class GameData : MonoBehaviour
 {
@@ -43,11 +45,17 @@ public class GameData : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Instance = this;
 
-        CurrentWeapon = weaponsWithStats[_currentWeaponIndex].weaponPrefab;
-        WeaponStats = weaponsWithStats[_currentWeaponIndex].weaponStats;
+        if (YandexGame.SDKEnabled)
+        {
+            LoadSaveData(); 
+        }
+        
 
         if (Level == 0)
         {
+            CurrentWeapon = weaponsWithStats[_currentWeaponIndex].weaponPrefab;
+            WeaponStats = weaponsWithStats[_currentWeaponIndex].weaponStats;
+            
             PlayerExplosionPerk.FrequencyLevel = 8;
             PlayerExplosionPerk.RadiusLevel = 6;
         }
@@ -55,7 +63,20 @@ public class GameData : MonoBehaviour
         Enemy.EnemyDied.AddListener(HandleKill);
         Enemy.EnemyDiedByWeakPoint.AddListener(HandleWeakPointKill);
 
-        CurrentSpeedModifier = levelsEnemySpawnData[Level].speedModifier;
+        CurrentSpeedModifier = Level < levelsEnemySpawnData.Count
+            ? levelsEnemySpawnData[Level].speedModifier
+            : (Level - levelsEnemySpawnData.Count) * 0.05f +
+              levelsEnemySpawnData[levelsEnemySpawnData.Count - 1].speedModifier;
+    }
+
+    private void OnEnable()
+    {
+        YandexGame.GetDataEvent += LoadSaveData;
+    }
+
+    private void OnDisable()
+    {
+        YandexGame.GetDataEvent -= LoadSaveData;
     }
 
     public void HandleKill()
@@ -102,12 +123,41 @@ public class GameData : MonoBehaviour
 
     public void SaveGame()
     {
-        
+        YandexGame.savesData.Money = Money;
+        YandexGame.savesData.Level = Level;
+        YandexGame.savesData.CurrentWeaponIndex = _currentWeaponIndex;
+        YandexGame.savesData.ExplosionFrequency = PlayerExplosionPerk.FrequencyLevel;
+        YandexGame.savesData.ExplosionRadius = PlayerExplosionPerk.RadiusLevel;
+        YandexGame.savesData.DualDuration = PlayerDualPerk.DurationLevel;
+        YandexGame.savesData.DualUses = PlayerDualPerk.UsesCount;
+        YandexGame.savesData.ReloadLevel = WeaponStats.ReloadLevel;
+        YandexGame.savesData.SpreadLevel = WeaponStats.SpreadLevel;
+        YandexGame.SaveProgress();
     }
 
     public void LoadSaveData()
     {
+        Money = YandexGame.savesData.Money;
+        Level = YandexGame.savesData.Level;
+        _currentWeaponIndex = YandexGame.savesData.CurrentWeaponIndex;
+        CurrentWeapon = weaponsWithStats[_currentWeaponIndex].weaponPrefab;
+        WeaponStats = weaponsWithStats[_currentWeaponIndex].weaponStats;
+
+        WeaponStats.ReloadLevel = YandexGame.savesData.ReloadLevel;
+        WeaponStats.SpreadLevel = YandexGame.savesData.SpreadLevel;
+
+        if (Level == 0)
+            return;
         
+        CurrentSpeedModifier = Level < levelsEnemySpawnData.Count
+            ? levelsEnemySpawnData[Level].speedModifier
+            : (Level - levelsEnemySpawnData.Count) * 0.05f +
+              levelsEnemySpawnData[levelsEnemySpawnData.Count - 1].speedModifier;
+        
+        PlayerDualPerk.DurationLevel = YandexGame.savesData.DualDuration;
+        PlayerDualPerk.UsesCount = YandexGame.savesData.DualUses;
+        PlayerExplosionPerk.FrequencyLevel = YandexGame.savesData.ExplosionFrequency;
+        PlayerExplosionPerk.RadiusLevel = YandexGame.savesData.ExplosionRadius;
     }
 
     public void ResetSave()
@@ -119,13 +169,29 @@ public class GameData : MonoBehaviour
 
         PlayerDualPerk.ResetPerk();
         PlayerExplosionPerk.ResetPerk();
+
+        for (var i = 0; i < weaponsWithStats.Length; i++)
+        {
+            weaponsWithStats[i].weaponStats.ReloadLevel = 0;
+            weaponsWithStats[i].weaponStats.SpreadLevel = 0;
+        }
+        
+        WeaponStats.ReloadLevel = 0;
+        WeaponStats.SpreadLevel = 0;
+
+        CurrentSpeedModifier = levelsEnemySpawnData[0].speedModifier;
+        
+        PlayerExplosionPerk.FrequencyLevel = 8;
+        PlayerExplosionPerk.RadiusLevel = 6;
+
+        Money = 0;
         
         SaveGame();
     }
 
-    public void ShowAdForReward()
+    public void ShowAdForReward(int id)
     {
-        
+        YandexGame.RewVideoShow(id);
     }
 
     public void ShowAd()

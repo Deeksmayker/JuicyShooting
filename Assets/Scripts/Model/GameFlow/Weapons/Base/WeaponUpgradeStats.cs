@@ -5,8 +5,8 @@ using UnityEngine;
 [Serializable]
 public class WeaponUpgradeStats
 {
-    public int ReloadLevel { get; private set; }
-    public int SpreadLevel { get; private set; }
+    public int ReloadLevel { get; set; }
+    public int SpreadLevel { get; set; }
 
 
     [field: SerializeField] public int CostToBuy { get; private set; }

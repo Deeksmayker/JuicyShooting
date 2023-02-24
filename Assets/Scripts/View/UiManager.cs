@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using NTC.Global.Pool;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 public class UiManager : MonoBehaviour
 {
@@ -64,6 +66,16 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        YandexGame.RewardVideoEvent += HandleReward;
+    }
+
+    private void OnDisable()
+    {
+        YandexGame.RewardVideoEvent -= HandleReward;
+    }
+
     public void ResetLevel()
     {
         SceneManager.LoadScene(0);
@@ -80,8 +92,8 @@ public class UiManager : MonoBehaviour
 
     public void ShowRewardAd(int id)
     {
-        Debug.LogWarning("No ad showing rn");
-        HandleReward(id);
+        //Debug.LogWarning("No ad showing rn");
+        GameData.Instance.ShowAdForReward(id);
     }
     
     private void HandleReward(int id)
@@ -145,6 +157,8 @@ public class UiManager : MonoBehaviour
         }
         UpdateMoneyTexts();
         StartCoroutine(SetCoinCounters());
+        
+        GameData.Instance.SaveGame();
     }
 
     private void UpdateMoneyTexts()

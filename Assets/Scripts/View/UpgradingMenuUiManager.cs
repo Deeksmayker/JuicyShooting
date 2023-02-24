@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class UpgradingMenuUiManager : MonoBehaviour
 {
@@ -165,6 +166,8 @@ public class UpgradingMenuUiManager : MonoBehaviour
             UpdateButtonWithCost(explosiveRadiusCost, GameData.Instance.PlayerExplosionPerk.GetRadiusUpgradeCost(),
                 GameData.Instance.PlayerExplosionPerk.RadiusLevel, explosiveRadiusButton);
         }
+        
+        GameData.Instance.SaveGame();
     }
 
     private void CheckPerksButtonsVisibility()
