@@ -42,12 +42,7 @@ public class EnemyView : MonoBehaviour
 
     private void ShowHitPopup(bool weakPoint, Vector3 pos)
     {
-        if (HitPopup.PopupPool == null)
-        {
-            HitPopup.SetupPool(hitPopup);
-        }
-
-        var popup = HitPopup.PopupPool.Get();
+        var popup = NightPool.Spawn(hitPopup);
         popup.transform.position = pos;
         popup.SetupPopup(weakPoint ? Color.red : Color.white);
     }

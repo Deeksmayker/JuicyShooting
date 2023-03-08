@@ -1,4 +1,5 @@
 using System;
+using NTC.Global.Pool;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -11,7 +12,7 @@ public class HitPopup : MonoBehaviour
     //private MeshRenderer _secondSideRenderer;
     private MaterialPropertyBlock _propertyBlock;
 
-    public static ObjectPool<HitPopup> PopupPool;
+    /*public static ObjectPool<HitPopup> PopupPool;
 
     public static void SetupPool(HitPopup prefab)
     {
@@ -21,7 +22,7 @@ public class HitPopup : MonoBehaviour
             (popup) => popup.gameObject.SetActive(false),
             (popup) => Destroy(popup),
             true, 20, 100);
-    }
+    }*/
     
     private void Awake()
     {
@@ -46,6 +47,6 @@ public class HitPopup : MonoBehaviour
 
     private void Disable()
     {
-        PopupPool.Release(this);
+        NightPool.Despawn(this);
     }
 }

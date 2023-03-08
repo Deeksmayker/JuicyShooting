@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         OnWin.AddListener(HandleWin);
         OnLose.AddListener(HandleLose);
         
-        HitPopup.PopupPool.Clear();
+        //HitPopup.PopupPool.Clear();
     }
 
     private void Update()
